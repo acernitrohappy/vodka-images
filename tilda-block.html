@@ -460,6 +460,7 @@
 #mastefi .ck-card:hover{border-color:rgba(127,188,69,.35);transform:translateY(-3px);box-shadow:0 24px 60px rgba(0,0,0,.45)}
 #mastefi .ck-photo{width:100%;aspect-ratio:16/9;background:#0b0d10;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
 #mastefi .ck-photo img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}  /* uniform height, bottle & glass never cropped */
+#mastefi .ck-photo video{width:100%;height:100%;object-fit:cover;object-position:center;display:block;background:#0b0d10}  /* cocktail video fills the card frame */
 #mastefi .ck-ph{position:relative;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
    background:radial-gradient(70% 80% at 50% 30%,color-mix(in srgb,var(--a) 22%,transparent),transparent 60%),linear-gradient(180deg,#1a1e24,#101319)}
 #mastefi .ck-ph span{font-family:var(--serif);font-size:22px;color:var(--ink)}
@@ -507,7 +508,7 @@
 /* ---- Unified premium image framing (soft rounded corners, resting depth) ---- */
 #mastefi .wideblock{border-radius:20px;box-shadow:0 20px 55px rgba(0,0,0,.38),inset 0 0 0 1px rgba(255,255,255,.05)}
 #mastefi .ck-card{border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.32),inset 0 0 0 1px rgba(255,255,255,.05)}
-#mastefi .ck-photo img{border-top-left-radius:17px;border-top-right-radius:17px}
+#mastefi .ck-photo img,#mastefi .ck-photo video{border-top-left-radius:17px;border-top-right-radius:17px}
 #mastefi .hero-visual.has-photo{box-shadow:0 30px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
 #mastefi .sku-visual{border-radius:16px}
 #mastefi .sku-visual img{border-radius:8px}
@@ -1129,22 +1130,22 @@ var SKU_LABELS={
 /* ===== Cocktail recommendations (wide cocktail photos; text cleaned from brief) ===== */
 var COCKTAILS=[
  {name:'Caipiroska', vodka:'Tesla Superior', accent:'#c9a24a', status:{ru:'Водочная интерпретация бразильской классики',en:'A vodka take on a Brazilian classic',es:'Interpretación en vodka de un clásico brasileño',pt:'Interpretação em vodca de um clássico brasileiro'},
-  img:'images/cocktail-1.png',
+  img:'images/cocktail-1.png', vid:'images/cocktail-1.mp4',
   cap:{ru:'Бразильская классика в водочной подаче: свежий лайм, тростниковый сахар и дроблёный лёд.',en:'A Brazilian classic in a vodka serve: fresh lime, cane sugar and crushed ice.',es:'Un clásico brasileño en versión vodka: lima fresca, azúcar de caña y hielo picado.',pt:'Um clássico brasileiro em versão vodca: limão fresco, açúcar mascavo e gelo picado.'},
   ing:{ru:['Tesla Superior','лайм','тростниковый сахар','дроблёный лёд'],en:['Tesla Superior','lime','cane sugar','crushed ice'],es:['Tesla Superior','lima','azúcar de caña','hielo picado'],pt:['Tesla Superior','limão','açúcar mascavo','gelo picado']},
   tags:{ru:['Бразилия','свежий','цитрусовый'],en:['Brazil','fresh','citrus'],es:['Brasil','fresco','cítrico'],pt:['Brasil','fresco','cítrico']}},
  {name:'Passion Fruit Vodka Sour', vodka:'Studinka Fresh', accent:'#d85fa0', status:{ru:'Авторская тропическая подача',en:'A signature tropical serve',es:'Servido tropical de autor',pt:'Servido tropical autoral'},
-  img:'images/cocktail-2.png',
+  img:'images/cocktail-2.png', vid:'images/cocktail-2.mp4',
   cap:{ru:'Тропическая авторская подача с маракуйей, лаймом и чистым характером водки.',en:'A tropical signature serve with passion fruit, lime and the vodka’s clean character.',es:'Un servido tropical de autor con maracuyá, lima y el carácter limpio de la vodka.',pt:'Um servido tropical autoral com maracujá, limão e o caráter limpo da vodca.'},
   ing:{ru:['Studinka Fresh','маракуйя','лайм','сироп','лёд'],en:['Studinka Fresh','passion fruit','lime','syrup','ice'],es:['Studinka Fresh','maracuyá','lima','sirope','hielo'],pt:['Studinka Fresh','maracujá','limão','xarope','gelo']},
   tags:{ru:['тропический','яркий','авторский'],en:['tropical','vivid','signature'],es:['tropical','vibrante','de autor'],pt:['tropical','vibrante','autoral']}},
  {name:'Pearl Martini', vodka:'Glubina Black Pearl', accent:'#9aa3ad', status:{ru:'Авторская премиальная подача',en:'A signature premium serve',es:'Servido premium de autor',pt:'Servido premium autoral'},
-  img:'images/cocktail-3.png',
+  img:'images/cocktail-3.png', vid:'images/cocktail-3.mp4',
   cap:{ru:'Холодный премиальный мартини: чистая водка, сухой вермут, лимонное масло и большой кристальный лёд.',en:'A cold premium martini: clean vodka, dry vermouth, lemon oils and a large crystal ice cube.',es:'Un martini premium bien frío: vodka limpia, vermut seco, aceite de limón y un gran cubo de hielo cristalino.',pt:'Um martíni premium bem gelado: vodca limpa, vermute seco, óleo de limão e um grande cubo de gelo cristalino.'},
   ing:{ru:['Glubina Black Pearl','сухой вермут','лимонное масло','кристальный лёд'],en:['Glubina Black Pearl','dry vermouth','lemon oil','crystal ice'],es:['Glubina Black Pearl','vermut seco','aceite de limón','hielo cristalino'],pt:['Glubina Black Pearl','vermute seco','óleo de limão','gelo cristalino']},
   tags:{ru:['премиум','чистый','холодный'],en:['premium','clean','cold'],es:['premium','limpio','frío'],pt:['premium','limpo','gelado']}},
  {name:'Verba Spring Collins', vodka:'Verba', accent:'#7fb0c8', status:{ru:'Авторская свежая подача',en:'A signature fresh serve',es:'Servido fresco de autor',pt:'Servido fresco autoral'},
-  img:'images/cocktail-4.png',
+  img:'images/cocktail-4.png', vid:'images/cocktail-4.mp4',
   cap:{ru:'Весенний коллинз: чистая водка Verba, лимонный сок, бузинный сироп, содовая и тонкая лента огурца.',en:'A spring Collins: clean Verba vodka, lemon juice, elderflower syrup, soda and a thin cucumber ribbon.',es:'Un Collins primaveral: vodka Verba limpia, zumo de limón, sirope de saúco, soda y una fina cinta de pepino.',pt:'Um Collins primaveril: vodca Verba limpa, suco de limão, xarope de sabugueiro, soda e uma fina fita de pepino.'},
   ing:{ru:['Verba','лимонный сок','бузинный сироп','содовая','огурец','лёд'],en:['Verba','lemon juice','elderflower syrup','soda','cucumber','ice'],es:['Verba','zumo de limón','sirope de saúco','soda','pepino','hielo'],pt:['Verba','suco de limão','xarope de sabugueiro','soda','pepino','gelo']},
   tags:{ru:['весенний','освежающий','чистый'],en:['spring','refreshing','clean'],es:['primaveral','refrescante','limpio'],pt:['primaveral','refrescante','limpo']}}
@@ -1447,9 +1448,11 @@ function renderCocktails(){
   wrap.innerHTML=COCKTAILS.map(function(c){
     var cap=pick(c.cap,lang), ing=(c.ing[lang]||c.ing.es||[]), tags=(c.tags[lang]||c.tags.es||[]);
     var status=c.status?pick(c.status,lang):'';
-    var photo = c.img
+    var photo = c.vid
+      ? '<div class="ck-photo"><video src="'+IMG(c.vid)+'" poster="'+IMG(c.img)+'" muted loop playsinline preload="metadata" aria-label="'+c.name+'"></video></div>'
+      : (c.img
       ? '<div class="ck-photo"><img src="'+IMG(c.img)+'" alt="'+c.name+'" loading="lazy"></div>'
-      : '<div class="ck-photo"><div class="ck-ph" style="--a:'+c.accent+'"><span>'+c.name+'</span><small>'+LB.soon+'</small></div></div>';
+      : '<div class="ck-photo"><div class="ck-ph" style="--a:'+c.accent+'"><span>'+c.name+'</span><small>'+LB.soon+'</small></div></div>');
     return '<div class="ck-card" data-reveal style="--a:'+c.accent+'">'+
       photo+
       '<div class="ck-body">'+
@@ -1462,6 +1465,19 @@ function renderCocktails(){
         '<div class="ck-disc">'+LB.disc+'</div>'+
       '</div></div>';
   }).join('');
+  /* Cocktail video: play on hover (desktop); autoplay in view on touch devices */
+  var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints>0;
+  wrap.querySelectorAll('.ck-card').forEach(function(card){
+    var v=card.querySelector('video'); if(!v) return;
+    if(isTouch){
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(ens){ens.forEach(function(e){ if(e.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); } });},{threshold:.4}).observe(v);
+      } else { v.play().catch(function(){}); }
+    } else {
+      card.addEventListener('mouseenter',function(){ v.play().catch(function(){}); });
+      card.addEventListener('mouseleave',function(){ v.pause(); try{v.currentTime=0;}catch(e){} });
+    }
+  });
   observeReveal();
 }
 function renderGlubinaFinale(){
