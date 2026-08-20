@@ -35,6 +35,10 @@
 #mastefi .btn-primary:hover{transform:translateY(-1px);background:#8fce52}
 #mastefi .btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.28)}
 #mastefi .btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+#mastefi .btn-gold{background:linear-gradient(135deg,#e8c874,#c9a24a);color:#241a08;box-shadow:0 6px 22px rgba(201,162,74,.24);position:relative;overflow:hidden}
+#mastefi .btn-gold:hover{transform:translateY(-1px);background:linear-gradient(135deg,#f0d488,#d4ad52)}
+#mastefi .btn-gold::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);transition:left .6s ease}
+#mastefi .btn-gold:hover::before{left:140%}
 #mastefi .btn-sm{padding:10px 16px;font-size:13.5px;border-radius:7px}
 #mastefi .preso-link{border:none;background:none;color:var(--muted);font-size:14px;font-weight:500;padding:14px 8px}
 #mastefi .preso-link:hover{color:var(--lime);transform:none}
@@ -690,7 +694,7 @@
       <div class="cta-row">
         <a href="#contact" class="btn btn-primary" data-i18n="hero_cta1">Solicitar catálogo de exportación</a>
         <a href="#portfolio" class="btn btn-ghost" data-i18n="hero_cta2">Explorar el portafolio</a>
-        <a class="btn btn-ghost preso-link" data-preso download data-i18n="preso_btn">↓ Descargar presentación</a>
+        <a class="btn btn-gold" data-preso download data-i18n="preso_btn">↓ Descargar presentación</a>
       </div>
       <div class="meridian">
         <div class="line">
@@ -1003,10 +1007,16 @@ var root = document.getElementById('mastefi');
                Бросьте папку images на Netlify Drop и укажите корень:
                например 'https://ваш-хост.netlify.app/'
                (код сам подставит имена файлов — файлы лежат в корне хоста)
-   PRESO_URL : ссылка на презентацию (PDF) для скачивания.
+   PRESO : ссылки на презентацию (PDF) по языкам (es/en/pt/ru) для скачивания.
    ============================================================ */
 var IMG_BASE  = 'https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/';
-var PRESO_URL = 'https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/mastefi-export-spirits-catalogue-english_compressed%20(1).pdf';
+var PRESO_BASE = 'https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/';
+var PRESO = {
+  es: PRESO_BASE + 'MASTEFI_Presentation_ES.pdf',
+  en: PRESO_BASE + 'MASTEFI_Presentation_EN.pdf',
+  pt: PRESO_BASE + 'MASTEFI_Presentation_PT.pdf',
+  ru: PRESO_BASE + 'MASTEFI_Presentation_RU.pdf'
+};
 /* Куда отправлять заявки формы. FormSubmit шлёт их на указанную почту без бэкенда.
    ВАЖНО: при первой отправке FormSubmit пришлёт на этот email письмо с ссылкой активации —
    нужно один раз перейти по ней, иначе заявки не будут доходить. */
@@ -1329,6 +1339,12 @@ function applyLang(lang){
   renderWideBlocks(); renderCocktails(); renderExports(); renderFAQ(); renderChips();
   /* lang buttons */
   root.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-setlang')===lang); });
+  /* presentation link per language */
+  root.querySelectorAll('[data-preso]').forEach(function(a){
+    var u=PRESO[lang]||PRESO.es;
+    if(u){ a.href=u; a.target='_blank'; a.rel='noopener'; a.setAttribute('download','MASTEFI_Presentation_'+lang.toUpperCase()+'.pdf'); a.style.display=''; }
+    else { a.style.display='none'; }
+  });
   try{ localStorage.setItem('mastefi_lang',lang);}catch(e){}
 }
 
@@ -1639,7 +1655,7 @@ var startLang='es'; try{ var s=localStorage.getItem('mastefi_lang'); if(s){ star
 /* resolve image paths through IMG_BASE (hero + any static imgs) */
 root.querySelectorAll('img[data-src]').forEach(function(i){ i.src=IMG(i.getAttribute('data-src')); });
 /* wire presentation download links */
-root.querySelectorAll('[data-preso]').forEach(function(a){ if(PRESO_URL){ a.href=PRESO_URL; } else { a.style.display='none'; } });
+/* preso links are set per-language inside applyLang() */
 /* messenger widget: wire links + expand toggle */
 (function(){
   var mw=root.querySelector('#msgWidget'); if(!mw) return;
