@@ -1424,7 +1424,7 @@ var selectedBrands={};
 function renderChips(){
   var lang=L(); var wrap=root.querySelector('#brandChips'); if(!wrap) return;
   var names=BRANDS.map(function(b){return b.name;});
-  names.push(lang==='es'?'Portafolio completo':(lang==='en'?'Full portfolio':'Весь портфель'));
+  names.push(lang==='es'?'Portafolio completo':lang==='en'?'Full portfolio':lang==='pt'?'Portfólio completo':'Весь портфель');
   wrap.innerHTML = names.map(function(n){ var on=selectedBrands[n]?' on':''; return '<span class="chip'+on+'" data-chip="'+n+'">'+n+'</span>'; }).join('');
   wrap.querySelectorAll('.chip').forEach(function(c){
     c.addEventListener('click',function(){ var n=c.getAttribute('data-chip'); selectedBrands[n]=!selectedBrands[n]; c.classList.toggle('on'); syncBrandsHidden(); });
@@ -1627,8 +1627,8 @@ root.querySelector('#b2bForm').addEventListener('submit',function(e){
   /* Build lead payload (would POST to webhook/CRM in production) */
   var lead={ name:val('name'), company:val('company'), country:val('country'), email:val('email'), role:val('role'), phone:val('phone'), interest:val('interest'), channel:val('channel'), brands:root.querySelector('#brandsHidden').value, volume:val('volume'), comment:val('comment'), lang:lang, page:location.href, ts:new Date().toISOString() };
   var submitBtn=f.querySelector('button[type=submit]'); var btnTxt=submitBtn?submitBtn.textContent:'';
-  var sendingTxt=lang==='ru'?'Отправка…':lang==='en'?'Sending…':'Enviando…';
-  var sendErr=lang==='ru'?'Не удалось отправить. Попробуйте ещё раз или напишите на export@mastefi.com.':lang==='en'?'Could not send. Please try again or email export@mastefi.com.':'No se pudo enviar. Inténtelo de nuevo o escriba a export@mastefi.com.';
+  var sendingTxt=lang==='ru'?'Отправка…':lang==='en'?'Sending…':lang==='pt'?'Enviando…':'Enviando…';
+  var sendErr=lang==='ru'?'Не удалось отправить. Попробуйте ещё раз или напишите на export@mastefi.com.':lang==='en'?'Could not send. Please try again or email export@mastefi.com.':lang==='pt'?'Não foi possível enviar. Tente novamente ou escreva para export@mastefi.com.':'No se pudo enviar. Inténtelo de nuevo o escriba a export@mastefi.com.';
   if(submitBtn){ submitBtn.disabled=true; submitBtn.textContent=sendingTxt; }
   msg.className='form-msg';
   var payload=Object.assign({ _subject:'MASTEFI · B2B заявка — '+(lead.company||'')+' ('+(lead.country||'')+')', _template:'table', _captcha:'false' }, lead);
