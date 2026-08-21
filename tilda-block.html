@@ -587,6 +587,14 @@
 
 /* ---- SKU detail modal (brand line explorer) ---- */
 #mastefi .sku-modal{position:fixed;inset:0;z-index:150;display:none;background:rgba(6,7,9,.72);backdrop-filter:blur(8px)}
+#mastefi .legal-modal{position:fixed;inset:0;z-index:160;display:none;background:rgba(6,7,9,.74);backdrop-filter:blur(8px)}
+#mastefi .legal-modal.open{display:flex;align-items:center;justify-content:center;padding:24px}
+#mastefi .legal-panel{position:relative;max-width:680px;width:100%;max-height:82vh;overflow:auto;background:var(--graphite);border:1px solid var(--line);border-radius:16px;padding:40px 44px}
+#mastefi .legal-panel h3{font-family:var(--serif);font-size:24px;margin:0 0 18px;color:var(--ink)}
+#mastefi .legal-body p{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 14px}
+#mastefi .legal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted2);font-size:22px;cursor:pointer;line-height:1}
+#mastefi .legal-close:hover{color:var(--ink)}
+@media (max-width:560px){#mastefi .legal-panel{padding:30px 22px}}
 #mastefi .sku-modal.open{display:block}
 #mastefi .sku-panel{position:absolute;top:0;right:0;height:100%;width:min(940px,100%);background:linear-gradient(180deg,#0f1116,#0b0d10);border-left:1px solid var(--line);box-shadow:-40px 0 100px rgba(0,0,0,.6);overflow-y:auto;transform:translateX(40px);opacity:0;transition:transform .45s cubic-bezier(.16,.7,.2,1),opacity .45s}
 #mastefi .sku-modal.open .sku-panel{transform:none;opacity:1}
@@ -978,9 +986,9 @@
         <li><a href="https://wa.me/573142498025">WhatsApp</a></li>
       </ul></div>
       <div><h4 data-i18n="foot_legal">Legal</h4><ul>
-        <li><a href="#" data-i18n="foot_privacy">Política de Privacidad</a></li>
-        <li><a href="#" data-i18n="foot_terms">Términos</a></li>
-        <li><a href="#" data-i18n="foot_cookies">Cookies</a></li>
+        <li><a href="#" data-legal="privacy" data-i18n="foot_privacy">Política de Privacidad</a></li>
+        <li><a href="#" data-legal="terms" data-i18n="foot_terms">Términos</a></li>
+        <li><a href="#" data-legal="cookies" data-i18n="foot_cookies">Cookies</a></li>
       </ul></div>
     </div>
     <div class="age-note">
@@ -1003,6 +1011,15 @@
       <div class="sku-attrs" id="skuAttrs"></div>
       <div id="skuRows"></div>
     </div>
+  </div>
+</div>
+
+<!-- ============ LEGAL MODAL ============ -->
+<div class="legal-modal" id="legalModal" role="dialog" aria-modal="true">
+  <div class="legal-panel">
+    <button class="legal-close" id="legalClose" aria-label="Close">✕</button>
+    <h3 id="legalTitle"></h3>
+    <div class="legal-body" id="legalBody"></div>
   </div>
 </div>
 
@@ -1565,6 +1582,18 @@ function closeSkuModal(){ var m=root.querySelector('#skuModal'); if(m){m.classLi
 root.querySelector('#skuClose').addEventListener('click',closeSkuModal);
 root.querySelector('#skuModal').addEventListener('click',function(e){ if(e.target===this) closeSkuModal(); });
 document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeSkuModal(); });
+
+/* ---- Legal modal (Privacy / Terms / Cookies) ---- */
+var LEGAL={privacy:{title:{es:'Política de Privacidad',en:'Privacy Policy',pt:'Política de Privacidade',ru:'Политика конфиденциальности'},body:{es:['MASTEFI, con oficina comercial en Bogotá (Colombia), es responsable del tratamiento de los datos personales facilitados a través del formulario B2B de este sitio.','Datos tratados: nombre, empresa, país, correo profesional, teléfono/WhatsApp, cargo, interés comercial y comentarios. Finalidad: atender y dar seguimiento a solicitudes comerciales de exportación. No vendemos ni cedemos sus datos a terceros con fines publicitarios.','Marco legal y derechos: el tratamiento se realiza conforme a la Ley 1581 de 2012 y demás normas aplicables de Colombia. Usted puede conocer, actualizar, rectificar o suprimir sus datos y revocar su autorización escribiendo a export@mastefi.com.','Conservación: los datos se conservan durante el tiempo necesario para gestionar la relación comercial y cumplir obligaciones legales. Última actualización: 2026.'],en:['MASTEFI, with a commercial office in Bogotá (Colombia), is the data controller for the personal data provided through the B2B form on this site.','Data processed: name, company, country, work email, phone/WhatsApp, role, commercial interest and comments. Purpose: to handle and follow up on export commercial inquiries. We do not sell or share your data with third parties for advertising purposes.','Legal framework and rights: processing is carried out in accordance with Colombian Law 1581 of 2012 and other applicable regulations. You may access, update, correct or delete your data and withdraw consent by writing to export@mastefi.com.','Retention: data is kept for as long as necessary to manage the commercial relationship and comply with legal obligations. Last updated: 2026.'],pt:['A MASTEFI, com escritório comercial em Bogotá (Colômbia), é a responsável pelo tratamento dos dados pessoais fornecidos por meio do formulário B2B deste site.','Dados tratados: nome, empresa, país, e-mail profissional, telefone/WhatsApp, cargo, interesse comercial e comentários. Finalidade: atender e acompanhar solicitações comerciais de exportação. Não vendemos nem compartilhamos seus dados com terceiros para fins publicitários.','Base legal e direitos: o tratamento é realizado conforme a Lei 1581 de 2012 da Colômbia e demais normas aplicáveis. Você pode acessar, atualizar, corrigir ou excluir seus dados e revogar o consentimento escrevendo para export@mastefi.com.','Retenção: os dados são mantidos pelo tempo necessário para gerir a relação comercial e cumprir obrigações legais. Última atualização: 2026.'],ru:['MASTEFI (коммерческий офис в Боготе, Колумбия) является оператором персональных данных, предоставляемых через форму B2B на этом сайте.','Обрабатываемые данные: имя, компания, страна, рабочий email, телефон/WhatsApp, должность, коммерческий интерес и комментарии. Цель: обработка и сопровождение экспортных коммерческих запросов. Мы не продаём и не передаём ваши данные третьим лицам в рекламных целях.','Правовая основа и права: обработка осуществляется в соответствии с законом Колумбии № 1581 от 2012 года и иными применимыми нормами. Вы можете получить доступ, обновить, исправить или удалить свои данные и отозвать согласие, написав на export@mastefi.com.','Хранение: данные хранятся столько, сколько необходимо для ведения коммерческих отношений и соблюдения правовых обязательств. Последнее обновление: 2026.']}},terms:{title:{es:'Términos',en:'Terms',pt:'Termos',ru:'Условия'},body:{es:['Este sitio web tiene carácter informativo y está dirigido a profesionales del comercio de bebidas y a personas mayores de la edad legal para el consumo de alcohol en su jurisdicción.','El sitio no realiza venta al público. La información sobre productos, disponibilidad, formatos y condiciones comerciales es orientativa y se confirma por mercado de destino y SKU mediante solicitud comercial.','Todas las marcas, nombres comerciales, imágenes y contenidos pertenecen a sus respectivos titulares y no pueden reproducirse sin autorización.','MASTEFI procura mantener la información actualizada, pero no garantiza la ausencia de errores. El uso del sitio se rige por la legislación de Colombia.'],en:['This website is informational and is intended for beverage-trade professionals and persons of legal drinking age in their jurisdiction.','The site does not carry out retail sales. Information on products, availability, formats and commercial terms is indicative and is confirmed per destination market and SKU upon commercial request.','All trademarks, trade names, images and content belong to their respective owners and may not be reproduced without authorization.','MASTEFI endeavors to keep information up to date but does not warrant that it is error-free. Use of the site is governed by the laws of Colombia.'],pt:['Este site tem caráter informativo e destina-se a profissionais do comércio de bebidas e a pessoas com idade legal para o consumo de álcool em sua jurisdição.','O site não realiza venda ao público. As informações sobre produtos, disponibilidade, formatos e condições comerciais são orientativas e confirmadas por mercado de destino e SKU mediante solicitação comercial.','Todas as marcas, nomes comerciais, imagens e conteúdos pertencem aos seus respectivos titulares e não podem ser reproduzidos sem autorização.','A MASTEFI procura manter as informações atualizadas, mas não garante a ausência de erros. O uso do site é regido pela legislação da Colômbia.'],ru:['Этот сайт носит информационный характер и предназначен для профессионалов алкогольной торговли и лиц, достигших разрешённого возраста употребления алкоголя в своей юрисдикции.','Сайт не осуществляет розничную продажу. Информация о продукции, доступности, форматах и коммерческих условиях носит ориентировочный характер и подтверждается по рынку назначения и SKU по коммерческому запросу.','Все товарные знаки, коммерческие наименования, изображения и контент принадлежат их правообладателям и не могут воспроизводиться без разрешения.','MASTEFI стремится поддерживать информацию актуальной, но не гарантирует отсутствие ошибок. Использование сайта регулируется законодательством Колумбии.']}},cookies:{title:{es:'Cookies',en:'Cookies',pt:'Cookies',ru:'Cookies'},body:{es:['Este sitio utiliza cookies técnicas necesarias para su funcionamiento y puede utilizar cookies analíticas para medir el uso de forma agregada.','Las cookies técnicas no requieren consentimiento. Las cookies analíticas se utilizan únicamente con fines estadísticos y no para publicidad.','Puede configurar o desactivar las cookies desde los ajustes de su navegador. Al continuar navegando sin cambiar la configuración, acepta el uso de cookies técnicas.'],en:['This site uses technical cookies necessary for its operation and may use analytics cookies to measure usage in aggregate.','Technical cookies do not require consent. Analytics cookies are used for statistical purposes only and not for advertising.','You can configure or disable cookies from your browser settings. By continuing to browse without changing the settings, you accept the use of technical cookies.'],pt:['Este site utiliza cookies técnicos necessários ao seu funcionamento e pode utilizar cookies analíticos para medir o uso de forma agregada.','Os cookies técnicos não exigem consentimento. Os cookies analíticos são usados apenas para fins estatísticos e não para publicidade.','Você pode configurar ou desativar os cookies nas configurações do seu navegador. Ao continuar navegando sem alterar as configurações, você aceita o uso de cookies técnicos.'],ru:['Этот сайт использует технические cookie, необходимые для его работы, и может использовать аналитические cookie для оценки использования в агрегированном виде.','Технические cookie не требуют согласия. Аналитические cookie используются только в статистических целях и не для рекламы.','Вы можете настроить или отключить cookie в настройках браузера. Продолжая просмотр без изменения настроек, вы принимаете использование технических cookie.']}}};
+function openLegal(key){ var lang=L(),d=LEGAL[key]; if(!d) return;
+  root.querySelector('#legalTitle').textContent=d.title[lang]||d.title.es;
+  root.querySelector('#legalBody').innerHTML=(d.body[lang]||d.body.es).map(function(p){return '<p>'+p+'</p>';}).join('');
+  var m=root.querySelector('#legalModal'); m.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLegal(){ var m=root.querySelector('#legalModal'); if(m){m.classList.remove('open'); document.body.style.overflow='';} }
+root.querySelectorAll('[data-legal]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); openLegal(a.getAttribute('data-legal')); }); });
+var _lc=root.querySelector('#legalClose'); if(_lc) _lc.addEventListener('click',closeLegal);
+var _lm=root.querySelector('#legalModal'); if(_lm) _lm.addEventListener('click',function(e){ if(e.target===this) closeLegal(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLegal(); });
 
 /* ================= INTERACTIONS ================= */
 function observeReveal(){
