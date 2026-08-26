@@ -1660,7 +1660,7 @@ root.querySelector('#b2bForm').addEventListener('submit',function(e){
   var sendErr=lang==='ru'?'Не удалось отправить. Попробуйте ещё раз или напишите на export@mastefi.com.':lang==='en'?'Could not send. Please try again or email export@mastefi.com.':lang==='pt'?'Não foi possível enviar. Tente novamente ou escreva para export@mastefi.com.':'No se pudo enviar. Inténtelo de nuevo o escriba a export@mastefi.com.';
   if(submitBtn){ submitBtn.disabled=true; submitBtn.textContent=sendingTxt; }
   msg.className='form-msg';
-  var payload=Object.assign({ _subject:'MASTEFI · B2B заявка — '+(lead.company||'')+' ('+(lead.country||'')+')', _template:'table', _captcha:'false' }, lead);
+  var payload=Object.assign({ _subject:'MASTEFI · B2B заявка — '+(lead.company||'')+' ('+(lead.country||'')+')', _template:'table', _captcha:'false', _cc:'sales@mastefi.com' }, lead);
   fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
    .then(function(r){ return r.json(); })
    .then(function(res){
