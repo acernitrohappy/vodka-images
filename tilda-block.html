@@ -47,15 +47,16 @@
 /* ---------- Header ---------- */
 #mastefi .hdr{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.86);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line);transition:padding .2s}
 #mastefi .hdr.shrink{padding:0}
-#mastefi .hdr .wrap{display:flex;align-items:center;gap:26px;height:74px;transition:height .2s}
+#mastefi .hdr .wrap{display:flex;align-items:center;gap:20px;height:74px;max-width:1280px;transition:height .2s}
 #mastefi .hdr.shrink .wrap{height:60px}
 #mastefi .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:.02em}
 #mastefi .logo .mark{width:26px;height:26px;flex:0 0 auto}
 #mastefi .logo small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;color:var(--muted2);font-weight:600;text-transform:uppercase;margin-top:1px}
-#mastefi nav.main{display:flex;gap:24px;margin-left:8px}
-#mastefi nav.main a{font-size:15px;color:var(--muted);font-weight:500;transition:color .18s}
+#mastefi nav.main{display:flex;align-items:center;gap:16px;margin-left:8px}
+#mastefi nav.main a{font-size:14px;color:var(--muted);font-weight:500;white-space:nowrap;transition:color .18s}
 #mastefi nav.main a:hover{color:var(--ink)}
-#mastefi .hdr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+#mastefi .hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+#mastefi .hdr-right .btn{white-space:nowrap}
 #mastefi .langsw{display:flex;gap:2px;border:1px solid var(--line);border-radius:7px;padding:3px}
 #mastefi .langsw button{font-size:12.5px;font-weight:600;padding:5px 9px;border-radius:5px;color:var(--muted2);letter-spacing:.04em}
 #mastefi .langsw button.active{background:var(--graphite);color:var(--ink)}
@@ -254,6 +255,15 @@
   #mastefi .chain .sep{display:none}
   #mastefi .pcard.featured{flex-direction:column}
   #mastefi .pcard.featured .pc-visual{width:100%;height:150px;margin-bottom:18px}
+}
+/* collapse the top nav into the burger before it ever gets cramped (RU/ES labels are wide) */
+@media(max-width:1279px){
+  #mastefi nav.main{display:none}
+  #mastefi .burger{display:flex}
+  #mastefi .hdr.menu-open + .mobile-menu,#mastefi .mobile-menu.show{display:block}
+  #mastefi .mobile-menu{position:fixed;top:74px;left:0;right:0;z-index:49;background:var(--bg2);border-bottom:1px solid var(--line);padding:20px 28px}
+  #mastefi .mobile-menu a{display:block;padding:12px 0;font-size:16px;border-bottom:1px solid var(--line);color:var(--ink)}
+  #mastefi .mobile-menu .langsw{display:flex;margin-top:16px;width:max-content}
 }
 @media(max-width:760px){
   #mastefi{font-size:16px}
