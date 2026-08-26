@@ -258,8 +258,14 @@
 @media(max-width:760px){
   #mastefi{font-size:16px}
   #mastefi section{padding:64px 0}
-  #mastefi nav.main,#mastefi .langsw{display:none}
+  #mastefi nav.main{display:none}
+  #mastefi .hdr-right .btn-primary,#mastefi .hdr-right .back-site{display:none}
+  #mastefi .hdr-right .langsw{display:flex;padding:2px;gap:1px}
+  #mastefi .hdr-right .langsw button{padding:5px 6px;font-size:11.5px;min-width:26px}
   #mastefi .burger{display:flex}
+  #mastefi .step .sn{position:static;display:block;top:auto;right:auto;font-size:22px;margin-bottom:6px}
+  #mastefi .step b{padding-right:0}
+  #mastefi{padding-bottom:90px}
   #mastefi .hdr.menu-open + .mobile-menu,#mastefi .mobile-menu.show{display:block}
   #mastefi .mobile-menu{position:fixed;top:74px;left:0;right:0;z-index:49;background:var(--bg2);border-bottom:1px solid var(--line);padding:20px 28px}
   #mastefi .mobile-menu a{display:block;padding:12px 0;font-size:16px;border-bottom:1px solid var(--line);color:var(--ink)}
@@ -858,11 +864,11 @@
     <div class="export-grid" id="exportGrid"><!-- rendered by JS --></div>
     <div class="section-label" style="margin-top:40px" data-i18n="eag_label">La exportación en resumen</div>
     <div class="eag-grid">
-      <div class="eag-item"><div class="eag-t" data-i18n="eag_moq_t">MOQ</div><div class="eag-v" data-i18n="eag_moq_v">Desde 1 palé completo por SKU</div></div>
+      <div class="eag-item"><div class="eag-t" data-i18n="eag_moq_t">MOQ</div><div class="eag-v" data-i18n="eag_moq_v">Desde 6 europalés por pedido</div></div>
       <div class="eag-item"><div class="eag-t" data-i18n="eag_mix_t">SKU mixtos</div><div class="eag-v" data-i18n="eag_mix_v">Carga mixta disponible</div></div>
       <div class="eag-item"><div class="eag-t" data-i18n="eag_20_t">Contenedor 20'</div><div class="eag-v" data-i18n="eag_20_v">11 palés</div></div>
       <div class="eag-item"><div class="eag-t" data-i18n="eag_40_t">Contenedor 40'</div><div class="eag-v" data-i18n="eag_40_v">25 palés</div></div>
-      <div class="eag-item"><div class="eag-t" data-i18n="eag_lead_t">Plazo de producción</div><div class="eag-v" data-i18n="eag_lead_v">~1 mes tras el anticipo</div></div>
+      <div class="eag-item"><div class="eag-t" data-i18n="eag_lead_t">Plazo de producción</div><div class="eag-v" data-i18n="eag_lead_v">~21 días tras el anticipo</div></div>
     </div>
     <p style="margin-top:22px;font-size:12.5px;color:var(--muted2)" data-i18n="exp_note">La disponibilidad exacta se confirma por mercado de destino y SKU. Los documentos se proporcionan según la solicitud comercial.</p>
   </div>
@@ -1238,7 +1244,7 @@ var I18N = {
   pl1_t:'Brief & positioning', pl1_p:'Country, channel, price segment, target buyer.', pl2_t:'Recipe & format', pl2_p:'Category, strength, profile, volume.', pl3_t:'Packaging', pl3_p:'Bottle, closure, label, carton, gift box.', pl4_t:'Regulatory adaptation', pl4_p:'Language, mandatory information, market, labeling.', pl5_t:'Samples', pl5_p:'Test version, approval, final sign-off.', pl6_t:'Production & export', pl6_p:'Production, packaging, documents, export batch.', pl_cta:'Discuss Private Label',
   mfr_label:'Production base', mfr_h2:'JSC “Brest Distillery Belalko”', mfr_p:'A plant with a verifiable production history. MASTEFI provides commercial access to its export portfolio for Latin America.',
   stat1:'Year Belalko was founded', stat2:'Depth of the artesian well', stat3:'export SKUs', stat3_sub:'7 lines · 15 product variants', mfr_note:'',
-  exp_label:'Export readiness', exp_h2:'Ready for international supply.', exp_note:'Exact availability is confirmed per destination market and SKU. Documents are provided on commercial request.', eag_label:'Export at a glance', eag_moq_t:'MOQ', eag_moq_v:'From 1 full pallet per SKU', eag_mix_t:'Mixed SKU', eag_mix_v:'Mixed loading available', eag_20_t:"20' container", eag_20_v:'11 pallets', eag_40_t:"40' container", eag_40_v:'25 pallets', eag_lead_t:'Production lead time', eag_lead_v:'~1 month after prepayment',
+  exp_label:'Export readiness', exp_h2:'Ready for international supply.', exp_note:'Exact availability is confirmed per destination market and SKU. Documents are provided on commercial request.', eag_label:'Export at a glance', eag_moq_t:'MOQ', eag_moq_v:'From 6 euro-pallets per order', eag_mix_t:'Mixed SKU', eag_mix_v:'Mixed loading available', eag_20_t:"20' container", eag_20_v:'11 pallets', eag_40_t:"40' container", eag_40_v:'25 pallets', eag_lead_t:'Production lead time', eag_lead_v:'~21 days after prepayment',
   faq_label:'FAQ', faq_h2:'Before you send your request',
   form_label:'B2B request', form_h2:'Request the catalogue and commercial terms.',
   cb_office:'Latin America office', cb_sales:'Sales', cb_export:'Export', cb_phone:'Phone', cb_web:'Website', cb_wa:' · Message us', cb_next:'What happens next', cb_next_d:'An export manager reviews your request and replies by email or WhatsApp with the next step.',
@@ -1272,7 +1278,7 @@ var I18N = {
   pl1_t:'Briefing e posicionamento', pl1_p:'País, canal, segmento de preço, comprador-alvo.', pl2_t:'Receita e formato', pl2_p:'Categoria, teor alcoólico, perfil, volume.', pl3_t:'Embalagem', pl3_p:'Garrafa, tampa, rótulo, caixa, embalagem de presente.', pl4_t:'Adaptação aos requisitos do mercado', pl4_p:'Idioma, informações obrigatórias, mercado, rotulagem. A possibilidade de adaptação é avaliada individualmente por mercado de destino.', pl5_t:'Amostras e aprovação', pl5_p:'Versão de teste, aprovação, validação final.', pl6_t:'Produção e exportação', pl6_p:'Produção, embalagem, documentos, lote de exportação.', pl_cta:'Falar sobre Private Label',
   mfr_label:'Base de produção', mfr_h2:'JSC “Destilaria de Brest Belalko”', mfr_p:'Uma fábrica com histórico de produção verificável. A MASTEFI oferece acesso comercial ao seu portfólio de exportação para a América Latina.',
   stat1:'Ano de fundação da Belalko', stat2:'Profundidade do poço artesiano', stat3:'SKUs de exportação', stat3_sub:'7 linhas · 15 referências', mfr_note:'',
-  exp_label:'Prontidão para exportação', exp_h2:'Prontos para o fornecimento internacional.', exp_note:'A disponibilidade de documentos, amostras e rotulagem é confirmada por mercado de destino e SKU.', eag_label:'Exportação num relance', eag_moq_t:'MOQ', eag_moq_v:'A partir de 1 palete completo por SKU', eag_mix_t:'SKU mistos', eag_mix_v:'Carga mista disponível', eag_20_t:"Contêiner 20'", eag_20_v:'11 paletes', eag_40_t:"Contêiner 40'", eag_40_v:'25 paletes', eag_lead_t:'Prazo de produção', eag_lead_v:'~1 mês após o adiantamento',
+  exp_label:'Prontidão para exportação', exp_h2:'Prontos para o fornecimento internacional.', exp_note:'A disponibilidade de documentos, amostras e rotulagem é confirmada por mercado de destino e SKU.', eag_label:'Exportação num relance', eag_moq_t:'MOQ', eag_moq_v:'A partir de 6 europaletes por pedido', eag_mix_t:'SKU mistos', eag_mix_v:'Carga mista disponível', eag_20_t:"Contêiner 20'", eag_20_v:'11 paletes', eag_40_t:"Contêiner 40'", eag_40_v:'25 paletes', eag_lead_t:'Prazo de produção', eag_lead_v:'~21 dias após o adiantamento',
   faq_label:'Perguntas frequentes', faq_h2:'Antes de enviar seu pedido',
   form_label:'Solicitação B2B', form_h2:'Solicite o catálogo e as condições comerciais.',
   cb_office:'Escritório na América Latina', cb_sales:'Vendas', cb_export:'Exportação', cb_phone:'Telefone', cb_web:'Site', cb_wa:' · Fale conosco', cb_next:'Próximos passos', cb_next_d:'Um gerente de exportação analisa seu pedido e responde por e-mail ou WhatsApp com o próximo passo.',
@@ -1306,7 +1312,7 @@ var I18N = {
   pl1_t:'Задача и позиционирование', pl1_p:'Страна, канал, ценовой сегмент, целевой покупатель.', pl2_t:'Рецептура и формат', pl2_p:'Категория, крепость, профиль, объём.', pl3_t:'Упаковка', pl3_p:'Бутылка, колпачок, этикетка, короб, подарочная упаковка.', pl4_t:'Адаптация под требования рынка', pl4_p:'Язык, обязательная информация, рынок, маркировка. Возможность адаптации рассматривается индивидуально по рынку назначения.', pl5_t:'Образцы и согласование', pl5_p:'Тестовый вариант, согласование, финальное утверждение.', pl6_t:'Производство и экспорт', pl6_p:'Производство, упаковка, документы, экспортная партия.', pl_cta:'Обсудить Private Label',
   mfr_label:'Производственная база', mfr_h2:'ОАО «Брестский ЛВЗ «Белалко»', mfr_p:'Завод с подтверждаемой производственной историей. MASTEFI предоставляет коммерческий доступ к его экспортному портфелю для Латинской Америки.',
   stat1:'Год основания «Белалко»', stat2:'Глубина артезианской скважины', stat3:'экспортных SKU', stat3_sub:'7 линеек · 15 наименований', mfr_note:'',
-  exp_label:'Готовность к экспорту', exp_h2:'Готовность к международной поставке.', exp_note:'Доступность документов, образцов и маркировки подтверждается по рынку назначения и SKU.', eag_label:'Экспорт коротко', eag_moq_t:'MOQ', eag_moq_v:'От 1 полной паллеты на SKU', eag_mix_t:'Смешанный SKU', eag_mix_v:'Смешанная загрузка доступна', eag_20_t:"Контейнер 20'", eag_20_v:'11 паллет', eag_40_t:"Контейнер 40'", eag_40_v:'25 паллет', eag_lead_t:'Срок производства', eag_lead_v:'≈1 месяц после предоплаты',
+  exp_label:'Готовность к экспорту', exp_h2:'Готовность к международной поставке.', exp_note:'Доступность документов, образцов и маркировки подтверждается по рынку назначения и SKU.', eag_label:'Экспорт коротко', eag_moq_t:'MOQ', eag_moq_v:'От 6 европаллет на заказ', eag_mix_t:'Смешанный SKU', eag_mix_v:'Смешанная загрузка доступна', eag_20_t:"Контейнер 20'", eag_20_v:'11 паллет', eag_40_t:"Контейнер 40'", eag_40_v:'25 паллет', eag_lead_t:'Срок производства', eag_lead_v:'≈21 день после предоплаты',
   faq_label:'Частые вопросы', faq_h2:'Перед отправкой заявки',
   form_label:'B2B-запрос', form_h2:'Запросите каталог и коммерческие условия.',
   cb_office:'Офис в Латинской Америке', cb_sales:'Продажи', cb_export:'Экспорт', cb_phone:'Телефон', cb_web:'Сайт', cb_wa:' · Напишите нам', cb_next:'Что дальше', cb_next_d:'Экспорт-менеджер рассматривает заявку и отвечает по email или WhatsApp со следующим шагом.',
