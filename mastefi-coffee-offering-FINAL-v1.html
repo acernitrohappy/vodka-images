@@ -1,0 +1,606 @@
+<!-- ============================================================
+     MASTEFI /coffees/ — OFFERING TEMPLATE — FINAL v1
+     Approved architecture 09.09.2026.
+     Offering = persistent entity (farm + variety + process).
+     Lots = 1..N physical batches, all variable data bound to Lot ID.
+
+     TO CONFIGURE:  see the CONFIG block at the top of the script below.
+     REVIEW mode:   CONFIG.review = true  -> orange DATA REQUIRED markers visible
+                    CONFIG.review = false -> markers hidden, empty blocks removed
+     ============================================================ -->
+<style>
+#mfc{--bg:#ffffff;--ink:#1a1c1a;--muted:#6b6f6b;--line:#e3e5e2;--accent:#63b417;--warn:#b4571a;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:Georgia,'Times New Roman',serif;
+  font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+#mfc *{box-sizing:border-box}
+#mfc .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+#mfc section{padding:44px 0;border-top:1px solid var(--line)}
+#mfc section:first-of-type{border-top:0}
+#mfc h1{font-family:var(--serif);font-size:38px;line-height:1.15;margin:0 0 10px;font-weight:400}
+#mfc h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 20px;font-weight:600}
+#mfc p{margin:0 0 12px}
+#mfc .sub{font-size:15px;color:var(--muted);margin:0 0 18px}
+#mfc .sub b{color:var(--ink);font-weight:600}
+#mfc .hero{padding-top:52px}
+#mfc .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:14px}
+#mfc .offering-id{font-size:11px;letter-spacing:.08em;color:var(--muted);
+  border:1px solid var(--line);border-radius:3px;padding:3px 8px;display:inline-block}
+
+#mfc .pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;font-weight:600}
+#mfc .pill.available{background:#eef7e3;color:#3d7a0c}
+#mfc .pill.reserved{background:#fdf3e2;color:#8a5a12}
+#mfc .pill.sold{background:#f1f1f1;color:#6b6f6b}
+
+/* ---- lots: multi mode ---- */
+#mfc .lots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+#mfc .lot{border:1px solid var(--line);border-radius:4px;padding:16px 18px;cursor:pointer;
+  background:#fff}
+#mfc .lot[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+#mfc .lot .lid{font-size:14px;font-weight:700;letter-spacing:.03em;margin-bottom:6px}
+#mfc .lot .meta{font-size:13px;color:var(--muted);margin-bottom:10px}
+#mfc .lot .vol{font-size:15px;font-weight:600;margin-bottom:10px}
+/* ---- lots: single mode — compact line, no choice ---- */
+#mfc .lots.single{display:block}
+#mfc .lots.single .lot{cursor:default;border-color:var(--line);box-shadow:none;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:14px 18px}
+#mfc .lots.single .lot .lid,
+#mfc .lots.single .lot .meta,
+#mfc .lots.single .lot .vol{margin:0;font-size:15px}
+#mfc .lots.single .lot .lid{font-weight:700}
+#mfc .lots.single .lot .meta{color:var(--muted)}
+#mfc .lots.single .lot .sep{color:var(--line)}
+
+#mfc table{width:100%;border-collapse:collapse;font-size:15px}
+#mfc td{padding:10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+#mfc td:first-child{color:var(--muted);width:42%;padding-right:20px}
+#mfc tr:last-child td{border-bottom:0}
+
+#mfc ol.proto{counter-reset:s;list-style:none;padding:0;margin:0}
+#mfc ol.proto li{counter-increment:s;position:relative;padding:0 0 16px 42px;font-size:15px}
+#mfc ol.proto li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;
+  border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:12px;color:var(--muted)}
+#mfc ol.proto b{font-weight:600}
+
+#mfc .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+#mfc .btn{display:inline-block;padding:13px 22px;border-radius:3px;font-size:14px;font-weight:600;
+  text-decoration:none;border:1px solid var(--accent);cursor:pointer}
+#mfc .btn-primary{background:var(--accent);color:#fff}
+#mfc .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+#mfc .note{font-size:13px;color:var(--muted);margin-top:14px}
+
+/* review-only markers */
+#mfc .dr{background:#fff6ee;border:1px dashed var(--warn);color:var(--warn);
+  border-radius:3px;padding:2px 7px;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;font-weight:600;display:inline-block}
+#mfc .block-missing{background:#fff6ee;border:1px dashed var(--warn);border-radius:4px;
+  padding:16px 18px;font-size:14px;color:var(--warn)}
+#mfc.live .dr,#mfc.live .block-missing,#mfc.live .review-only{display:none!important}
+
+@media(max-width:640px){
+  #mfc h1{font-size:27px}
+  #mfc section{padding:32px 0}
+  #mfc td:first-child{width:50%}
+}
+</style>
+
+<div id="mfc">
+
+<!-- ===== 1. HERO — offering level, never changes with lot ===== -->
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">Colombian green coffee · Specialty</div>
+  <h1>Colombia Tolima Wush Wush Yellow Natural — Monteverde</h1>
+  <p class="sub"><b>Florestales II</b> · Herrera, Tolima · 1900 masl</p>
+  <span class="offering-id">Offering ID: MF-COF-0001</span>
+</div></section>
+
+<!-- ===== 2. AVAILABLE LOTS — rendered from LOTS[], 1..N ===== -->
+<section data-sec="lots"><div class="wrap">
+  <h2>Available lots</h2>
+  <div class="lots" id="lotList" role="tablist"></div>
+</div></section>
+
+<!-- ===== 3. CTA — always carries the selected Lot ID ===== -->
+<section><div class="wrap">
+  <div class="cta" id="ctaTop"></div>
+</div></section>
+
+<!-- ===== 4. LOT SPECIFICATIONS — variable ===== -->
+<section data-sec="specs"><div class="wrap">
+  <h2>Lot specifications — <span data-lotctx></span></h2>
+  <div data-slot="specs"></div>
+</div></section>
+
+<!-- ===== 5. CUPPING — variable, hidden until confirmed ===== -->
+<section data-sec="cupping"><div class="wrap">
+  <h2>Cupping &amp; sensory</h2>
+  <div data-slot="cupping"></div>
+</div></section>
+
+<!-- ===== 6. PROCESSING PROTOCOL — offering level, confirmed ===== -->
+<section><div class="wrap">
+  <h2>Processing protocol · Yellow Natural</h2>
+  <ol class="proto">
+    <li>Selection and picking of ripe cherries.</li>
+    <li>Flotation in water for density selection.</li>
+    <li>Oxidation in tanks or bags — <b>48 hours</b>.</li>
+    <li>Fermentation in hermetically sealed containers — <b>96 hours</b>, driven by the
+        farm's native microorganisms.</li>
+    <li>Sun drying <b>down to 20 % moisture</b>.</li>
+    <li>Finish drying in a mechanical dryer to target moisture.</li>
+  </ol>
+  <p class="sub" style="margin-top:16px">The name “Yellow” comes from the characteristic yellow
+  tone the beans develop during fermentation.</p>
+  <p class="note review-only">Missing: fermentation temperature · number of sun-drying days ·
+  numeric target moisture. <span class="dr">data required</span></p>
+</div></section>
+
+<!-- ===== 7. ORIGIN & PRODUCER — offering level ===== -->
+<section><div class="wrap">
+  <h2>Origin &amp; producer</h2>
+  <table>
+    <tr><td>Country</td><td>Colombia</td></tr>
+    <tr><td>Department</td><td>Tolima</td></tr>
+    <tr><td>Corregimiento</td><td>Herrera (southern Tolima)</td></tr>
+    <tr class="review-only"><td>Municipality</td><td><span class="dr">data required</span></td></tr>
+    <tr><td>Producers</td><td>Gildardo Gutiérrez and Miralba Falla (4th generation)<br>
+      Johan, Newerley and Katerinne Gutiérrez Falla (5th generation)</td></tr>
+    <tr><td>Production history</td><td>100 years. Land acquired by Alejandrino Gutiérrez
+      around 1941; the Monteverde brand was established in 2010.</td></tr>
+    <tr class="review-only"><td>Coordinates</td><td><span class="dr">data required</span></td></tr>
+  </table>
+</div></section>
+
+<!-- ===== 8. FARM — offering level ===== -->
+<section><div class="wrap">
+  <h2>Farm</h2>
+  <table>
+    <tr><td>Farm</td><td>Florestales II</td></tr>
+    <tr><td>Brand / programme</td><td>Monteverde — two estates: Florestales II (coffee)
+      and La Primavera (cattle). Coffee comes from Florestales II only.</td></tr>
+    <tr><td>Farm size</td><td>11 ha</td></tr>
+    <tr><td>Trees planted</td><td>26,000</td></tr>
+    <tr><td>Tree age</td><td>4–11 years</td></tr>
+    <tr class="review-only"><td>Area under coffee</td><td><span class="dr">data required</span></td></tr>
+    <tr class="review-only"><td>Other varieties on the farm</td><td><span class="dr">data required</span></td></tr>
+  </table>
+</div></section>
+
+<!-- ===== 9. VARIETY — offering level ===== -->
+<section><div class="wrap">
+  <h2>Variety</h2>
+  <table>
+    <tr><td>Variety</td><td>Wush Wush Yellow</td></tr>
+    <tr class="review-only"><td>Variety background</td><td><span class="dr">data required</span></td></tr>
+  </table>
+</div></section>
+
+<!-- ===== 10. GROWING CONDITIONS — offering level ===== -->
+<section><div class="wrap">
+  <h2>Growing conditions</h2>
+  <table>
+    <tr><td>Altitude</td><td>1900 masl</td></tr>
+    <tr><td>Temperature</td><td>16 °C min – 26 °C max</td></tr>
+    <tr><td>Annual rainfall</td><td>1,700 mm</td></tr>
+    <tr><td>Sunlight</td><td>120–194.6 hours per month</td></tr>
+    <tr><td>Climate pattern</td><td>Warmest December–January and July–September;
+      cooler February–June and October–November</td></tr>
+    <tr><td>Main harvest</td><td>October – January (60 % of the crop)</td></tr>
+    <tr><td>Mitaca</td><td>April – August (40 % of the crop)</td></tr>
+    <tr class="review-only"><td>Soil</td><td><span class="dr">data required</span></td></tr>
+  </table>
+</div></section>
+
+<!-- ===== 11. PACKAGING — variable ===== -->
+<section data-sec="packaging"><div class="wrap">
+  <h2>Packaging — <span data-lotctx></span></h2>
+  <div data-slot="packaging"></div>
+</div></section>
+
+<!-- ===== 12. AVAILABILITY & COMMERCIAL — variable ===== -->
+<section data-sec="commercial"><div class="wrap">
+  <h2>Availability &amp; commercial — <span data-lotctx></span></h2>
+  <div data-slot="commercial"></div>
+</div></section>
+
+<!-- ===== 13. DOCUMENTS & TRACEABILITY — exporter level ===== -->
+<section><div class="wrap">
+  <h2>Documents &amp; traceability</h2>
+  <table>
+    <tr><td>Exporter</td><td>MASTEFI EXPORT S.A.S., Bogotá, Colombia</td></tr>
+    <tr><td>ICO exporter code</td><td>2582</td></tr>
+    <tr class="review-only"><td>Farm dossier</td><td><span class="dr">producer page not created yet</span></td></tr>
+    <tr class="review-only"><td>Certifications</td><td><span class="dr">data required</span></td></tr>
+    <tr><td>Phytosanitary certificate</td><td>Issued per shipment</td></tr>
+  </table>
+</div></section>
+
+<!-- ===== 14. HARVEST HISTORY ===== -->
+<section data-sec="history"><div class="wrap">
+  <h2>Harvest history</h2>
+  <div data-slot="history"></div>
+</div></section>
+
+<!-- ===== 15. SIMILAR + REPEAT CTA ===== -->
+<section data-sec="similar"><div class="wrap">
+  <h2>Similar available coffees</h2>
+  <div data-slot="similar"></div>
+  <div class="cta" id="ctaBottom" style="margin-top:26px"></div>
+</div></section>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ==================== CONFIG ==================== */
+var CONFIG = {
+  review: true,                       /* false = live: markers hidden, empty blocks removed */
+  offeringId: "MF-COF-0001",
+  offeringName: "Colombia Tolima Wush Wush Yellow Natural — Monteverde",
+  /* CTA destinations — existing sample-request form on /assortment.
+     Form block: rec3588741503 ("REQUEST A COFFEE SAMPLE").
+     Query params are read by the form page and written into hidden fields. */
+  formUrl: "/assortment",
+  formAnchor: "#rec3588741503",
+  ctaHref: function(type, lot){
+    return CONFIG.formUrl
+      + "?request="  + encodeURIComponent(type)
+      + "&offering=" + encodeURIComponent(CONFIG.offeringId)
+      + "&lot="      + encodeURIComponent(lot.id)
+      + CONFIG.formAnchor;
+  }
+};
+
+/* ==================== LOTS ====================
+   One object per physical lot. Add a second object to activate the N-lot selector.
+   Only confirmed values go here. null = not confirmed, field is not published.
+   status: "available" | "reserved" | "sold"                                    */
+var LOTS = [
+  {
+    id: "MF-L-000001",
+    status: null,          /* not confirmed */
+    harvest: null,         /* e.g. "Main crop 2025/26" */
+    cropYear: null,
+    volumeKg: null,
+    registered: null,
+    exportDate: null,
+    specs: {                       /* physical specifications */
+      grade: null, screen: null, moisture: null, waterActivity: null,
+      defects: null, density: null
+    },
+    cupping: {                     /* published only when score+protocol+cupper+date are all present */
+      score: null, protocol: null, descriptors: null,
+      cuppedBy: null, cuppingDate: null, sampleRef: null
+    },
+    packaging: {
+      primary: null, bagWeight: null, alternative: null, perPallet: null
+    },
+    commercial: {
+      moq: null, incoterms: null, portOfLoading: null, shipmentWindow: null,
+      sampleTerms: null
+    }
+  }
+];
+
+/* Harvest history — fills from the second harvest onward */
+var HISTORY = [];
+
+/* Similar available coffees — populated once /coffees/ has more pages */
+var SIMILAR = [];
+
+/* ==================== ENGINE ==================== */
+var root = document.getElementById("mfc");
+if (!root) return;
+if (!CONFIG.review) root.classList.add("live");
+
+var MIN_FIELDS = 3;   /* fewer than this many confirmed fields -> block is not shown */
+
+function present(v){ return v !== null && v !== undefined && v !== ""; }
+function countFilled(obj){
+  var n = 0, k;
+  for (k in obj) if (obj.hasOwnProperty(k) && present(obj[k])) n++;
+  return n;
+}
+function esc(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function rows(pairs){
+  var html = "", i;
+  for (i = 0; i < pairs.length; i++){
+    if (!present(pairs[i][1])) continue;
+    html += "<tr><td>" + esc(pairs[i][0]) + "</td><td>" + esc(pairs[i][1]) + "</td></tr>";
+  }
+  return html ? "<table>" + html + "</table>" : "";
+}
+function missing(title, awaiting){
+  return '<div class="block-missing"><b>' + esc(title) + '</b><br>Awaiting: '
+       + esc(awaiting) + "</div>";
+}
+function hideSection(name){
+  var s = root.querySelector('[data-sec="' + name + '"]');
+  if (s) s.style.display = "none";
+}
+function showSection(name){
+  var s = root.querySelector('[data-sec="' + name + '"]');
+  if (s) s.style.display = "";
+}
+function slot(name){ return root.querySelector('[data-slot="' + name + '"]'); }
+
+/* ---------- lot list ---------- */
+function statusPill(st){
+  if (!present(st)) return CONFIG.review
+    ? '<span class="dr">status — data required</span>' : "";
+  var label = { available:"Available", reserved:"Reserved", sold:"Sold out" }[st] || st;
+  var cls   = { available:"available", reserved:"reserved", sold:"sold" }[st] || "sold";
+  return '<span class="pill ' + cls + '">' + esc(label) + "</span>";
+}
+
+/* separator + value as one unit; in live mode an unconfirmed unit disappears whole */
+function piece(value, cls, reviewLabel){
+  if (present(value)){
+    return '<span class="sep">·</span><span class="' + cls + '">' + value + "</span>";
+  }
+  if (!CONFIG.review) return "";
+  return '<span class="review-only"><span class="sep">·</span>'
+       + '<span class="dr">' + esc(reviewLabel) + "</span></span>";
+}
+function statusPiece(st){
+  if (present(st)){
+    return '<span class="sep">·</span>' + statusPill(st);
+  }
+  if (!CONFIG.review) return "";
+  return '<span class="review-only"><span class="sep">·</span>'
+       + '<span class="dr">status — data required</span></span>';
+}
+
+function renderLots(){
+  var list = root.querySelector("#lotList");
+  var single = LOTS.length === 1;
+  list.className = "lots" + (single ? " single" : "");
+  var html = "", i, l;
+
+  for (i = 0; i < LOTS.length; i++){
+    l = LOTS[i];
+    var harvest = present(l.harvest) ? esc(l.harvest)
+                : (CONFIG.review ? '<span class="dr">harvest — data required</span>' : "");
+    var vol = present(l.volumeKg) ? esc(l.volumeKg) + " kg available"
+            : (CONFIG.review ? '<span class="dr">volume — data required</span>' : "");
+
+    if (single){
+      /* compact single line, no choice offered.
+         Separator + value are wrapped together so that in live mode an
+         unconfirmed value removes its separator with it. */
+      html += '<div class="lot" role="presentation" aria-selected="true" data-lot="'
+            + esc(l.id) + '">'
+            + '<span class="lid">' + esc(l.id) + "</span>"
+            + piece(l.harvest, "meta", "harvest — data required")
+            + piece(present(l.volumeKg) ? esc(l.volumeKg) + " kg available" : null,
+                    "vol", "volume — data required")
+            + statusPiece(l.status)
+            + "</div>";
+    } else {
+      html += '<div class="lot" role="tab" tabindex="0" aria-selected="'
+            + (i === 0 ? "true" : "false") + '" data-lot="' + esc(l.id) + '">'
+            + '<div class="lid">' + esc(l.id) + "</div>"
+            + '<div class="meta">' + harvest + "</div>"
+            + '<div class="vol">' + vol + "</div>"
+            + "<div>" + statusPill(l.status) + "</div>"
+            + "</div>";
+    }
+  }
+  list.innerHTML = html;
+
+  if (!single){
+    var cards = list.querySelectorAll(".lot");
+    Array.prototype.forEach.call(cards, function(c){
+      c.addEventListener("click", function(){ selectLot(c.getAttribute("data-lot")); });
+      c.addEventListener("keydown", function(e){
+        if (e.key === "Enter" || e.key === " "){ e.preventDefault(); selectLot(c.getAttribute("data-lot")); }
+      });
+    });
+  }
+}
+
+/* ---------- variable blocks, bound to the selected lot ---------- */
+function renderSpecs(l){
+  var s = l.specs;
+  var body = rows([
+    ["Grade", s.grade], ["Screen size", s.screen], ["Moisture", s.moisture],
+    ["Water activity", s.waterActivity], ["Defects / 300 g", s.defects],
+    ["Density", s.density], ["Crop year", l.cropYear],
+    ["Available volume", present(l.volumeKg) ? l.volumeKg + " kg" : null]
+  ]);
+  var filled = countFilled(s) + (present(l.cropYear) ? 1 : 0) + (present(l.volumeKg) ? 1 : 0);
+
+  if (filled >= MIN_FIELDS){ slot("specs").innerHTML = body; showSection("specs"); return; }
+  if (CONFIG.review){
+    slot("specs").innerHTML = missing(
+      "Fewer than " + MIN_FIELDS + " confirmed fields — table hidden by rule. "
+      + "Live page shows: Full specification sheet on request.",
+      "grade · screen size · moisture · water activity · defects/300 g · density · "
+      + "crop year · available volume");
+    showSection("specs");
+  } else {
+    slot("specs").innerHTML =
+      '<p class="sub">Full specification sheet on request.</p>';
+    showSection("specs");
+  }
+}
+
+function renderCupping(l){
+  var c = l.cupping;
+  var complete = present(c.score) && present(c.protocol)
+              && present(c.cuppedBy) && present(c.cuppingDate);
+  if (complete){
+    slot("cupping").innerHTML = rows([
+      ["Cup score", c.score], ["Protocol", c.protocol],
+      ["Flavour", c.descriptors], ["Cupped by", c.cuppedBy],
+      ["Cupping date", c.cuppingDate], ["Sample reference", c.sampleRef]
+    ]);
+    showSection("cupping");
+    return;
+  }
+  if (CONFIG.review){
+    slot("cupping").innerHTML = missing(
+      "Block reserved, not displayed on the live page.",
+      "score · protocol · 4–6 descriptors · cupper name and Q-grader ID · "
+      + "cupping date · sample reference");
+    showSection("cupping");
+  } else {
+    hideSection("cupping");
+  }
+}
+
+function renderPackaging(l){
+  var p = l.packaging;
+  var body = rows([
+    ["Primary packaging", p.primary], ["Bag weight", p.bagWeight],
+    ["Alternative packaging", p.alternative], ["Bags per pallet", p.perPallet]
+  ]);
+  if (countFilled(p) >= MIN_FIELDS){ slot("packaging").innerHTML = body; showSection("packaging"); return; }
+  if (CONFIG.review){
+    slot("packaging").innerHTML = missing("No confirmed fields.",
+      "primary packaging · bag weight · alternative packaging · bags per pallet and container");
+    showSection("packaging");
+  } else { hideSection("packaging"); }
+}
+
+function renderCommercial(l){
+  var c = l.commercial;
+  var body = rows([
+    ["Status", present(l.status) ? l.status : null],
+    ["Available volume", present(l.volumeKg) ? l.volumeKg + " kg" : null],
+    ["Harvest", l.harvest],
+    ["MOQ", c.moq], ["Incoterms", c.incoterms],
+    ["Port of loading", c.portOfLoading], ["Shipment window", c.shipmentWindow],
+    ["Sample", c.sampleTerms]
+  ]);
+  var filled = countFilled(c) + (present(l.status)?1:0)
+             + (present(l.volumeKg)?1:0) + (present(l.harvest)?1:0);
+  var priceLine = '<p class="sub" style="margin-top:14px">Price is quoted per lot. '
+                + "Quotation on request.</p>";
+
+  if (filled >= MIN_FIELDS){
+    slot("commercial").innerHTML = body + priceLine; showSection("commercial"); return;
+  }
+  if (CONFIG.review){
+    slot("commercial").innerHTML = missing("Fewer than " + MIN_FIELDS + " confirmed fields.",
+      "available volume · MOQ · Incoterms · port of loading · shipment window · sample terms")
+      + priceLine;
+    showSection("commercial");
+  } else {
+    slot("commercial").innerHTML = priceLine; showSection("commercial");
+  }
+}
+
+function renderHistory(){
+  if (HISTORY.length){
+    var html = "<table>", i, h;
+    for (i = 0; i < HISTORY.length; i++){
+      h = HISTORY[i];
+      html += "<tr><td>" + esc(h.harvest) + "</td><td>" + esc(h.lotId)
+            + (present(h.score) ? " · " + esc(h.score) : "")
+            + (present(h.volumeKg) ? " · " + esc(h.volumeKg) + " kg" : "")
+            + (present(h.status) ? " · " + esc(h.status) : "")
+            + "</td></tr>";
+    }
+    slot("history").innerHTML = html + "</table>";
+    showSection("history");
+    return;
+  }
+  if (CONFIG.review){
+    slot("history").innerHTML = missing(
+      "Empty at launch — fills from the second harvest onward.",
+      "harvest · lot ID · cup score · descriptors · volume exported · status");
+    showSection("history");
+  } else { hideSection("history"); }
+}
+
+function renderSimilar(){
+  var sec = root.querySelector('[data-sec="similar"]');
+  var head = sec ? sec.querySelector("h2") : null;
+
+  if (SIMILAR.length){
+    var html = '<div class="lots">', i, sm;
+    for (i = 0; i < SIMILAR.length; i++){
+      sm = SIMILAR[i];
+      html += '<a class="lot" style="text-decoration:none;color:inherit" href="' + esc(sm.url) + '">'
+            + '<div class="lid">' + esc(sm.title) + "</div>"
+            + '<div class="meta">' + esc(sm.meta || "") + "</div></a>";
+    }
+    slot("similar").innerHTML = html + "</div>";
+    if (head) head.style.display = "";
+    showSection("similar");
+    return;
+  }
+  if (CONFIG.review){
+    slot("similar").innerHTML = missing("Requires a second and third page in /coffees/.",
+      "Available only -> same variety + same process -> same farm -> same variety -> "
+      + "same process + same region -> same region");
+    if (head) head.style.display = "";
+  } else {
+    /* live + nothing to show: heading and body hidden, section kept only for the repeat CTA */
+    slot("similar").innerHTML = "";
+    if (head) head.style.display = "none";
+  }
+  showSection("similar");
+}
+
+function renderCTA(l){
+  var html =
+      '<a class="btn btn-primary" href="' + CONFIG.ctaHref("sample", l) + '">Request sample — '
+    + esc(l.id) + "</a>"
+    + '<a class="btn btn-ghost" href="' + CONFIG.ctaHref("quote", l) + '">Request quote — '
+    + esc(l.id) + "</a>";
+  root.querySelector("#ctaTop").innerHTML = html;
+  root.querySelector("#ctaBottom").innerHTML = html;
+}
+
+/* ---------- selection ---------- */
+function firstSelectable(){
+  var i;
+  for (i = 0; i < LOTS.length; i++) if (LOTS[i].status === "available") return LOTS[i];
+  return LOTS[0];                       /* nothing marked available -> first lot */
+}
+
+function selectLot(id){
+  var lot = null, i;
+  for (i = 0; i < LOTS.length; i++) if (LOTS[i].id === id) lot = LOTS[i];
+  if (!lot) return;
+
+  var cards = root.querySelectorAll("#lotList .lot");
+  Array.prototype.forEach.call(cards, function(c){
+    c.setAttribute("aria-selected", c.getAttribute("data-lot") === id ? "true" : "false");
+  });
+  Array.prototype.forEach.call(root.querySelectorAll("[data-lotctx]"), function(s){
+    s.textContent = lot.id;
+  });
+
+  renderSpecs(lot);
+  renderCupping(lot);
+  renderPackaging(lot);
+  renderCommercial(lot);
+  renderCTA(lot);
+}
+
+/* ---------- init ---------- */
+if (!LOTS.length){
+  hideSection("lots"); hideSection("specs"); hideSection("cupping");
+  hideSection("packaging"); hideSection("commercial");
+} else {
+  renderLots();
+  renderHistory();
+  renderSimilar();
+  selectLot(firstSelectable().id);      /* always auto-select; no "no selection" state */
+}
+})();
+</script>
