@@ -34,9 +34,12 @@
 #mastefi .cy-h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:18ch}
 #mastefi .cy-sub{margin-top:18px;max-width:52ch;font-size:19px;font-weight:600;color:var(--ink)}
 #mastefi .btn-tech{margin-top:28px;padding:16px 30px;font-size:16px}
-#mastefi .cy-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;margin-top:46px;align-items:start}
+#mastefi .cy-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;margin-top:34px;align-items:start}
 #mastefi .cy-body p{color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px}
 #mastefi .cy-body p:last-child{margin-bottom:0}
+#mastefi .cy-right{display:grid;gap:20px;align-content:start}
+#mastefi .cy-scheme{margin:0}
+#mastefi .cy-scheme img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
 #mastefi .cy-side{background:var(--bg2);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:14px;padding:30px 28px}
 #mastefi .cy-chain-label{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 #mastefi .cy-chain{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink);margin:18px 0 0}
@@ -831,11 +834,14 @@
         <p data-i18n="cy_p2">Una vez unidos el agua preparada y el alcohol, se controla la graduación del lote. Después, la mezcla pasa por arena de cuarzo, carbón activado, filtros finales de arena, filtración por membrana y pulido fino de 0,2 µm.</p>
         <p data-i18n="cy_p3">La etapa final ocurre en la misma planta: el producto se embotella en tres líneas automáticas KOSME, cada una con un punto de control visual de las botellas terminadas.</p>
       </div>
-      <aside class="cy-side">
+      <div class="cy-right">
+        <figure class="cy-scheme"><img src="https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/production-scheme.jpg" alt="" loading="lazy"></figure>
+        <aside class="cy-side">
         <div class="cy-chain-label" data-i18n="cy_chain_label">Una sola cadena de producción</div>
         <p class="cy-chain" data-i18n="cy_chain">Fuente de agua → preparación del agua → producción de alcohol → mezcla → filtración → control → embotellado</p>
         <p class="cy-value" data-i18n="cy_value">Un fabricante identificable, una cadena de producción controlada y un control único sobre las etapas clave.</p>
-      </aside>
+        </aside>
+      </div>
     </div>
     <blockquote class="cy-quote" data-i18n="cy_quote">No es solo embotellar un producto terminado. La base productiva abarca agua, alcohol, tratamiento, filtración y embotellado en una sola planta.</blockquote>
     <div class="section-label cy-tech-label" data-i18n="cy_tech">Tecnologías de las líneas</div>
