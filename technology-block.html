@@ -16,13 +16,13 @@
 #mftech img{max-width:100%;display:block}
 #mftech a{color:inherit;text-decoration:none}
 #mftech .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
-#mftech section{padding:80px 0;border-top:1px solid var(--line)}
+#mftech section{padding:40px 0;border-top:1px solid var(--line)}
 #mftech h1,#mftech h2{font-family:var(--serif);font-weight:400;line-height:1.12}
-#mftech h2{font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;letter-spacing:.01em}
+#mftech h2{font-size:clamp(22px,2.6vw,34px);text-transform:uppercase;letter-spacing:.01em}
 #mftech .label{font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
 #mftech .label::before{content:"— ";color:var(--gold)}
-#mftech p{color:var(--muted);font-size:17px;line-height:1.78}
-#mftech p + p{margin-top:18px}
+#mftech p{color:var(--muted);font-size:15.5px;line-height:1.62}
+#mftech p + p{margin-top:13px}
 
 #mftech .bar{position:sticky;top:0;z-index:20;background:rgba(13,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 #mftech .bar .wrap{display:flex;align-items:center;gap:20px;height:64px}
@@ -36,47 +36,46 @@
 #mftech .langs button:hover{color:var(--ink)}
 #mftech .langs button[aria-current="true"]{background:var(--lime);color:var(--lime-ink)}
 
-#mftech .top{padding:70px 0 80px;border-top:0}
-#mftech .top h1{font-size:clamp(34px,5vw,62px);margin-top:14px;text-transform:uppercase}
-#mftech .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:start;margin-top:44px}
-#mftech .intro{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);line-height:1.38;color:var(--ink);max-width:30ch}
-#mftech .cols .body{margin-top:26px}
-#mftech figure img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
-#mftech figcaption{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted2)}
+#mftech .top{padding:34px 0 40px;border-top:0}
+#mftech .top h1{font-size:clamp(25px,2.4vw,32px);margin-top:10px;text-transform:uppercase}
+#mftech .cols{display:grid;grid-template-columns:0.84fr 1fr;gap:44px;align-items:start;margin-top:24px}
+#mftech .intro{font-family:var(--serif);font-size:clamp(17px,1.7vw,21px);line-height:1.46;color:var(--ink)}
+#mftech .cols .body{margin-top:14px}
+#mftech figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line)}
 
-#mftech .zone{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;margin-top:40px;align-items:start}
-#mftech .zone figure img{background:#fff;border-radius:14px}
+#mftech .zone{display:grid;grid-template-columns:1.12fr 0.88fr;gap:40px;margin-top:20px;align-items:start}
+#mftech .zone figure img{background:#fff;border-radius:6px;aspect-ratio:auto;object-fit:contain;width:100%}
 #mftech ol.z{list-style:none;counter-reset:z}
-#mftech ol.z li{counter-increment:z;position:relative;padding:13px 0 13px 44px;border-top:1px solid var(--line);color:var(--muted);font-size:15.5px;line-height:1.55}
-#mftech ol.z li:first-child{border-top:0}
-#mftech ol.z li::before{content:counter(z,decimal-leading-zero);position:absolute;left:0;top:13px;font-family:var(--mono);font-size:12px;color:var(--gold)}
+#mftech ol.z li{counter-increment:z;position:relative;padding:4px 0 4px 30px;color:var(--muted);font-size:15px;line-height:1.5}
 
-#mftech .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-#mftech .strip img{width:100%;height:230px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+#mftech ol.z li::before{content:counter(z) ".";position:absolute;left:0;top:5px;font-family:var(--mono);font-size:14px;color:var(--gold)}
 
-#mftech .proc{margin-top:36px;max-width:78ch}
-#mftech .proc p{font-size:16.5px}
-#mftech .note{margin-top:22px;padding:18px 22px;border-left:2px solid var(--gold);background:var(--bg2);border-radius:0 10px 10px 0}
+#mftech .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+#mftech .strip img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:0;border:0;display:block}
+
+#mftech .proc{margin-top:18px;max-width:none}
+#mftech .proc p{font-size:15.5px;line-height:1.62}
+#mftech .note{margin:14px 0;padding:13px 18px;border-left:2px solid var(--gold);background:var(--bg2);border-radius:0 8px 8px 0}
 #mftech .note p{font-size:14.5px;color:var(--muted2);line-height:1.6}
 
-#mftech .cta{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:44px;margin-top:8px}
+#mftech .cta{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:26px 30px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
 #mftech .cta h2{font-size:clamp(22px,2.6vw,32px);text-transform:none}
-#mftech .btn{display:inline-flex;align-items:center;gap:.5em;margin-top:22px;padding:14px 26px;border-radius:9px;background:var(--lime);color:var(--lime-ink);font-weight:700;font-size:15px}
+#mftech .btn{display:inline-flex;align-items:center;gap:.5em;padding:14px 26px;border-radius:9px;background:var(--lime);color:var(--lime-ink);font-weight:700;font-size:15px;white-space:nowrap}
 
-#mftech .src{padding:38px 0 70px;border-top:1px solid var(--line)}
+#mftech .src{padding:18px 0 26px;border-top:1px solid var(--line);text-align:center}
 #mftech .src p{font-size:14px;color:var(--muted2)}
 #mftech .src a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-#mftech .warn{margin-top:20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)}
+#mftech .warn{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)}
 
-@media (max-width:1000px){#mftech .strip{grid-template-columns:repeat(3,1fr)}#mftech .strip img{height:190px}}
+@media (max-width:1000px){#mftech .strip{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:900px){
-  #mftech section{padding:58px 0}
+  #mftech section{padding:34px 0}
+  #mftech .cta{grid-template-columns:1fr;gap:18px}
   #mftech .cols,#mftech .zone{grid-template-columns:1fr;gap:30px}
   #mftech .cta{padding:30px}
 }
 @media (max-width:560px){
-  #mftech .strip{grid-template-columns:repeat(2,1fr);gap:8px}
-  #mftech .strip img{height:150px}
+  #mftech .strip{grid-template-columns:repeat(2,1fr)}
   #mftech .back{display:none}
 }
 </style>
@@ -98,11 +97,10 @@
 
 <section class="top">
   <div class="wrap">
-    <div class="label" data-i18n="t_label">Belalco &middot; Brest</div>
-    <h1 data-i18n="t_h1">Tecnolog&iacute;a de la planta</h1>
+    <div class="label" data-i18n="t_label">Tecnolog&iacute;a de la planta &middot; Belalco, Brest</div>
+    <h1 data-i18n="t_h1">Producci&oacute;n</h1>
     <div class="cols">
       <div>
-        <h2 style="font-size:clamp(22px,2.6vw,32px)" data-i18n="a_h2">Producci&oacute;n</h2>
         <p class="intro" style="margin-top:18px" data-i18n="a_intro">La producci&oacute;n de vodka moderno es un proceso qu&iacute;mico-tecnol&oacute;gico complejo que exige el cumplimiento estricto de la receta y reg&iacute;menes de pureza extrema en todos los componentes de la futura bebida.</p>
         <div class="body">
           <p data-i18n="a_p1">Antes de preparar el coupage con alcohol de grano, el agua pasa por una limpieza minuciosa y no recibe tratamiento t&eacute;rmico. Se ablanda y se trata con instalaciones de sodio-cati&oacute;nita y &oacute;smosis inversa. El agua dura est&aacute; sobresaturada de sales de calcio y magnesio, las llamadas sales de dureza, que pueden reaccionar con el alcohol.</p>
@@ -110,8 +108,7 @@
         </div>
       </div>
       <figure>
-        <img data-img="blending-tanks" alt="" data-i18n-alt="a_alt">
-        <figcaption data-i18n="a_cap">&Aacute;rea de vodka de la destiler&iacute;a Belalco</figcaption>
+        <img data-img="hero-technology" alt="" data-i18n-alt="a_alt">
       </figure>
     </div>
   </div>
@@ -144,8 +141,8 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
+<section style="padding:0;border-top:0">
+  <div class="wrap" style="max-width:none;padding:0">
     <div class="strip">
       <img data-img="tank-sortirovka" alt="" data-i18n-alt="st1">
       <img data-img="water-osmosis" alt="" data-i18n-alt="st2">
@@ -173,8 +170,10 @@
 <section>
   <div class="wrap">
     <div class="cta">
-      <h2 data-i18n="cta_h2">&iquest;Quiere el portafolio de exportaci&oacute;n?</h2>
-      <p style="margin-top:14px;max-width:62ch" data-i18n="cta_p">Siete l&iacute;neas, quince productos, veintiún SKU. Enviamos la ficha t&eacute;cnica y las condiciones seg&uacute;n su mercado.</p>
+      <div>
+        <h2 data-i18n="cta_h2">&iquest;Quiere el portafolio de exportaci&oacute;n?</h2>
+        <p style="margin-top:10px;max-width:58ch" data-i18n="cta_p">Siete l&iacute;neas, quince productos, veintiún SKU. Enviamos la ficha t&eacute;cnica y las condiciones seg&uacute;n su mercado.</p>
+      </div>
       <a class="btn" href="/vodka#contact" data-i18n="cta_btn">Solicitar el cat&aacute;logo &rarr;</a>
     </div>
   </div>
@@ -182,10 +181,7 @@
 
 <div class="src">
   <div class="wrap">
-    <p data-i18n="src_p">Contenido t&eacute;cnico seg&uacute;n el sitio oficial de la destiler&iacute;a de Brest &laquo;Belalco&raquo;, secci&oacute;n Tecnolog&iacute;a:</p>
-    <p style="margin-top:8px"><a href="https://brestvodka.com/about/technology/" target="_blank" rel="noopener nofollow">brestvodka.com/about/technology</a></p>
-    <p style="margin-top:14px" data-i18n="src_role">Belalco es el fabricante. MASTEFI EXPORT S.A.S. es su distribuidor comercial para los mercados acordados de Am&eacute;rica Latina y no fabrica la bebida.</p>
-    <div class="warn" data-i18n="src_warn">El consumo excesivo de alcohol perjudica la salud &middot; Material para profesionales del sector &middot; 18+</div>
+    <div class="warn" data-i18n="src_warn">El consumo excesivo de alcohol perjudica la salud</div>
   </div>
 </div>
 </div>
@@ -204,7 +200,7 @@
 
   var T={};
   T.ru={
-    nav_back:'← Назад к портфелю', t_label:'Belalco · Брест', t_h1:'Технология завода',
+    nav_back:'← Назад к портфелю', t_label:'Технология завода · Belalco, Брест', t_h1:'Производство',
     a_h2:'Производство',
     a_intro:'Производство современной водки — сложнейший химико-технологический процесс, который требует строжайшего соблюдения рецептуры и режимов предельной чистоты всех составляющих будущего напитка.',
     a_p1:'Перед созданием купажа с хлебным спиртом вода проходит тщательную очистку и не подвергается термической обработке. Её умягчают и обрабатывают натрий-катионитовыми установками и обратным осмосом. Жёсткая вода перенасыщена солями кальция и магния, так называемыми солями жёсткости, и они могут вступить в реакцию со спиртом.',
@@ -243,10 +239,10 @@
     cta_btn:'Запросить каталог →',
     src_p:'Технический материал приведён по официальному сайту Брестского ликеро-водочного завода «Белалко», раздел «Технология»:',
     src_role:'«Белалко» — производитель. MASTEFI EXPORT S.A.S. — его коммерческий дистрибьютор на согласованных рынках Латинской Америки, напиток не производит.',
-    src_warn:'Чрезмерное употребление алкоголя вредит вашему здоровью · Материал для профессионалов отрасли · 18+'
+    src_warn:'Чрезмерное употребление алкоголя вредит вашему здоровью'
   };
   T.en={
-    nav_back:'← Back to the portfolio', t_label:'Belalco · Brest', t_h1:'Factory technology',
+    nav_back:'← Back to the portfolio', t_label:'Factory technology · Belalco, Brest', t_h1:'Production',
     a_h2:'Production',
     a_intro:'Making modern vodka is a highly complex chemical and technological process that demands strict adherence to the recipe and extreme purity in every component of the future drink.',
     a_p1:'Before the coupage with grain spirit is prepared, the water is thoroughly cleaned and never heat treated. It is softened and processed on sodium-cationite units and by reverse osmosis. Hard water is oversaturated with calcium and magnesium salts, the so-called hardness salts, and these can react with the spirit.',
@@ -285,10 +281,10 @@
     cta_btn:'Request the catalogue →',
     src_p:'Technical content as published by the official website of the Brest distillery Belalco, Technology section:',
     src_role:'Belalco is the manufacturer. MASTEFI EXPORT S.A.S. is its commercial distributor for the agreed Latin American markets and does not produce the drink.',
-    src_warn:'Excessive alcohol consumption harms your health · Trade material for industry professionals · 18+'
+    src_warn:'Excessive alcohol consumption harms your health'
   };
   T.es={
-    nav_back:'← Volver al portafolio', t_label:'Belalco · Brest', t_h1:'Tecnología de la planta',
+    nav_back:'← Volver al portafolio', t_label:'Tecnología de la planta · Belalco, Brest', t_h1:'Producción',
     a_h2:'Producción',
     a_intro:'La producción de vodka moderno es un proceso químico-tecnológico complejo que exige el cumplimiento estricto de la receta y regímenes de pureza extrema en todos los componentes de la futura bebida.',
     a_p1:'Antes de preparar el coupage con alcohol de grano, el agua pasa por una limpieza minuciosa y no recibe tratamiento térmico. Se ablanda y se trata con instalaciones de sodio-cationita y ósmosis inversa. El agua dura está sobresaturada de sales de calcio y magnesio, las llamadas sales de dureza, y estas pueden reaccionar con el alcohol.',
@@ -327,10 +323,10 @@
     cta_btn:'Solicitar el catálogo →',
     src_p:'Contenido técnico según el sitio oficial de la destilería de Brest «Belalco», sección Tecnología:',
     src_role:'Belalco es el fabricante. MASTEFI EXPORT S.A.S. es su distribuidor comercial para los mercados acordados de América Latina y no fabrica la bebida.',
-    src_warn:'El consumo excesivo de alcohol perjudica la salud · Material para profesionales del sector · 18+'
+    src_warn:'El consumo excesivo de alcohol perjudica la salud'
   };
   T.pt={
-    nav_back:'← Voltar ao portfólio', t_label:'Belalco · Brest', t_h1:'Tecnologia da fábrica',
+    nav_back:'← Voltar ao portfólio', t_label:'Tecnologia da fábrica · Belalco, Brest', t_h1:'Produção',
     a_h2:'Produção',
     a_intro:'A produção da vodca moderna é um processo químico-tecnológico complexo que exige o cumprimento rigoroso da receita e regimes de pureza extrema em todos os componentes da futura bebida.',
     a_p1:'Antes do preparo do coupage com álcool de cereais, a água passa por uma limpeza minuciosa e não recebe tratamento térmico. Ela é abrandada e tratada em instalações de sódio-cationita e por osmose reversa. A água dura está supersaturada de sais de cálcio e magnésio, os chamados sais de dureza, e eles podem reagir com o álcool.',
@@ -369,7 +365,7 @@
     cta_btn:'Solicitar o catálogo →',
     src_p:'Conteúdo técnico conforme o site oficial da destilaria de Brest «Belalco», seção Tecnologia:',
     src_role:'A Belalco é a fabricante. A MASTEFI EXPORT S.A.S. é sua distribuidora comercial para os mercados acordados da América Latina e não produz a bebida.',
-    src_warn:'O consumo excessivo de álcool faz mal à saúde · Material para profissionais do setor · 18+'
+    src_warn:'O consumo excessivo de álcool faz mal à saúde'
   };
 
   var KEY='mastefi_lang';
