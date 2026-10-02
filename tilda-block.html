@@ -1,4 +1,5 @@
 <div id="mastefi" data-lang="es">
+<div id="mfSpot" aria-hidden="true"></div>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 /* ---------- Scoped reset & tokens ---------- */
@@ -709,7 +710,7 @@
 #mastefi .btn-ghost{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
 #mastefi .btn-ghost:hover{border-color:var(--lime);background:rgba(127,188,69,.08);color:var(--lime)}
 #mastefi .cy-card,#mastefi .cy-side,#mastefi .pcard{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
-#mastefi .cy-card:hover,#mastefi .pcard:hover{border-color:rgba(201,162,74,.55);box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(-2px)}
+#mastefi .cy-card:hover,#mastefi .pcard:hover,#mastefi .cy-side:hover,#mastefi .cy-value-box:hover{border-color:rgba(170,210,255,.42);box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 26px rgba(150,200,255,.09);transform:translateY(-2px)}
 @media (max-width:760px){#mastefi section{padding:56px 0}}
 
 /* ---- Подложка: глубина фона ---- */
@@ -736,6 +737,21 @@
 #mastefi footer{background:transparent}
 @media (max-width:760px){#mastefi::after{display:none}}
 @media (prefers-reduced-motion:no-preference){}
+
+/* ---- Подсветка за курсором ---- */
+#mastefi #mfSpot{
+  position:fixed;top:0;left:0;width:820px;height:820px;margin:-410px 0 0 -410px;
+  z-index:-1;pointer-events:none;opacity:0;transition:opacity .45s ease;
+  background:radial-gradient(circle,
+    rgba(198,228,255,.13) 0%,
+    rgba(160,205,255,.07) 34%,
+    rgba(120,175,255,.028) 56%,
+    transparent 70%);
+  will-change:transform;
+}
+#mastefi #mfSpot.on{opacity:1}
+@media (hover:none),(pointer:coarse),(max-width:900px){#mastefi #mfSpot{display:none}}
+@media (prefers-reduced-motion:reduce){#mastefi #mfSpot{display:none}}
 </style>
 
 <!-- ============ AGE GATE ============ -->
@@ -1843,3 +1859,24 @@ observeStats();
 </script>
 </div>
 <!-- ↑↑↑ ДЛЯ TILDA: конец копируемого блока ↑↑↑ -->
+
+<script>
+(function(){
+  var root=document.getElementById('mastefi');if(!root)return;
+  var spot=document.getElementById('mfSpot');if(!spot)return;
+  if(!window.matchMedia||!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  var tx=0,ty=0,cx=0,cy=0,run=false,on=false,init=false;
+  function loop(){
+    cx+=(tx-cx)*0.14; cy+=(ty-cy)*0.14;
+    spot.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0)';
+    if(Math.abs(tx-cx)>0.4||Math.abs(ty-cy)>0.4){requestAnimationFrame(loop);}else{run=false;}
+  }
+  window.addEventListener('mousemove',function(e){
+    tx=e.clientX; ty=e.clientY;
+    if(!init){init=true;cx=tx;cy=ty;}
+    if(!on){on=true;spot.classList.add('on');}
+    if(!run){run=true;requestAnimationFrame(loop);}
+  },{passive:true});
+  window.addEventListener('mouseleave',function(){on=false;spot.classList.remove('on');},{passive:true});
+})();
+</script>
