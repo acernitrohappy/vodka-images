@@ -34,18 +34,26 @@
 #mastefi .cy-h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:18ch}
 #mastefi .cy-sub{margin-top:18px;max-width:52ch;font-size:19px;font-weight:600;color:var(--ink)}
 #mastefi .btn-tech{margin-top:28px;padding:16px 30px;font-size:16px}
-#mastefi .cy-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;margin-top:34px;align-items:start}
+#mastefi .cy-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;margin-top:34px;align-items:stretch}
 #mastefi .cy-body p{color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px}
 #mastefi .cy-body p:last-child{margin-bottom:0}
-#mastefi .cy-photo{margin:26px 0 0}
-#mastefi .cy-photo img{display:block;width:100%;height:auto;aspect-ratio:16/7;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
-#mastefi .cy-right{display:grid;gap:20px;align-content:start}
+#mastefi .cy-body{display:flex;flex-direction:column}
+#mastefi .cy-photo{margin:26px 0 0;flex:1;min-height:200px}
+#mastefi .cy-photo img{display:block;width:100%;height:100%;min-height:200px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+@media (max-width:900px){#mastefi .cy-body{display:block}#mastefi .cy-photo{flex:none}#mastefi .cy-photo img{height:auto;aspect-ratio:16/9}}
+#mastefi .cy-right{display:flex;flex-direction:column;gap:20px}
+#mastefi .cy-value-box{flex:1;display:flex;flex-direction:column;justify-content:center}
+#mastefi .cy-p3{margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid var(--line);color:var(--muted);font-size:15.5px;line-height:1.7}
+@media (max-width:900px){#mastefi .cy-value-box{flex:none;display:block}}
 #mastefi .cy-scheme{margin:0}
 #mastefi .cy-scheme img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)}
 #mastefi .cy-side{background:var(--bg2);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:14px;padding:30px 28px}
 #mastefi .cy-chain-label{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 #mastefi .cy-chain{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink);margin:18px 0 0}
-#mastefi .cy-value{margin:22px 0 0;padding-top:20px;border-top:1px solid var(--line);color:var(--muted2);font-size:15px;line-height:1.65}
+#mastefi .cy-value-box{background:var(--bg2);border:1px solid var(--line);border-left:2px solid var(--lime);border-radius:14px;padding:26px 28px;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+#mastefi .cy-value-box:hover{box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(-2px)}
+#mastefi .cy-value{margin:0;color:var(--muted2);font-size:15px;line-height:1.65}
+@media (max-width:560px){#mastefi .cy-value-box{padding:22px 20px}}
 #mastefi .cy-quote{margin:46px 0 0;padding:26px 0 26px 28px;border-left:2px solid var(--lime);font-family:var(--serif);font-size:clamp(19px,2.1vw,26px);line-height:1.5;color:var(--ink);max-width:46ch}
 #mastefi .cy-tech-label{margin-top:56px}
 #mastefi .cy-tech{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}
@@ -691,6 +699,43 @@
 #mastefi .eyebrow::before,#mastefi .section-label::before{top:0;left:0;width:46px;height:2px;background:var(--gold);opacity:1;transform:none}
 #mastefi .mfr .section-label,#mastefi .mfr .eyebrow{color:#8a6c22}
 #mastefi .mfr .section-label::before,#mastefi .mfr .eyebrow::before{background:#8a6c22}
+
+/* ---- Плотность секций и читаемость кнопок hero ---- */
+#mastefi section{padding:72px 0}
+#mastefi .hero .cta-row{display:grid;grid-template-columns:auto auto;gap:10px;justify-content:start;align-items:stretch}
+#mastefi .hero .cta-row .btn-gold{grid-column:1 / -1}
+@media (max-width:560px){#mastefi .hero .cta-row{grid-template-columns:1fr}#mastefi .hero .cta-row .btn-gold{grid-column:auto}}
+#mastefi .hero .cta-row .btn{padding:14px 20px;font-size:14.5px;justify-content:center}
+#mastefi .btn-ghost{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+#mastefi .btn-ghost:hover{border-color:var(--lime);background:rgba(127,188,69,.08);color:var(--lime)}
+#mastefi .cy-card,#mastefi .cy-side,#mastefi .pcard{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+#mastefi .cy-card:hover,#mastefi .pcard:hover{border-color:rgba(201,162,74,.55);box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(-2px)}
+@media (max-width:760px){#mastefi section{padding:56px 0}}
+
+/* ---- Подложка: глубина фона ---- */
+#mastefi{position:relative;isolation:isolate;background:#0b0d10}
+#mastefi::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(900px 560px at 18% 0%, rgba(127,188,69,.07), transparent 60%),
+    radial-gradient(820px 620px at 96% 34%, rgba(201,162,74,.045), transparent 58%),
+    radial-gradient(760px 600px at 4% 86%, rgba(90,169,255,.035), transparent 60%),
+    linear-gradient(180deg,#101318 0%,#0d0f13 50%,#0a0c0f 100%);
+}
+#mastefi::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(130% 110% at 50% 40%, #000 18%, transparent 72%);
+  -webkit-mask-image:radial-gradient(130% 110% at 50% 40%, #000 18%, transparent 72%);
+}
+#mastefi section,#mastefi .hero,#mastefi footer{position:relative;z-index:0}
+#mastefi section{background:transparent}
+#mastefi footer{background:transparent}
+@media (max-width:760px){#mastefi::after{display:none}}
+@media (prefers-reduced-motion:no-preference){}
 </style>
 
 <!-- ============ AGE GATE ============ -->
@@ -840,14 +885,16 @@
       <div class="cy-body">
         <p data-i18n="cy_p1">Las etapas clave de producción se concentran en una sola planta de Belalco en Brest. La destilería cuenta con su propia base de producción de alcohol y elabora alcohol etílico rectificado y destilados de cereal. El portafolio de exportación utiliza alcohol rectificado clase «Lux» de materia prima alimentaria de cereal. El agua proviene de su propia fuente artesiana y recibe un tratamiento previo a la mezcla: ablandamiento por intercambio iónico y purificación por ósmosis inversa.</p>
         <p data-i18n="cy_p2">Una vez unidos el agua preparada y el alcohol, se controla la graduación del lote. Después, la mezcla pasa por arena de cuarzo, carbón activado, filtros finales de arena, filtración por membrana y pulido fino de 0,2 µm.</p>
-        <p data-i18n="cy_p3">La etapa final ocurre en la misma planta: el producto se embotella en tres líneas automáticas KOSME, cada una con un punto de control visual de las botellas terminadas.</p>
-              <figure class="cy-photo"><img src="https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/line-hall.jpg" alt="" loading="lazy"></figure>
+      <figure class="cy-photo"><img src="https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/line-hall.jpg" alt="" loading="lazy"></figure>
       </div>
       <div class="cy-right">
         <figure class="cy-scheme"><img src="https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/production-scheme.jpg" alt="" loading="lazy"></figure>
         <aside class="cy-side">
         <div class="cy-chain-label" data-i18n="cy_chain_label">Una sola cadena de producción</div>
         <p class="cy-chain" data-i18n="cy_chain">Fuente de agua → preparación del agua → producción de alcohol → mezcla → filtración → control → embotellado</p>
+        </aside>
+        <aside class="cy-value-box">
+        <p class="cy-p3" data-i18n="cy_p3">La etapa final ocurre en la misma planta: el producto se embotella en tres líneas automáticas KOSME, cada una con un punto de control visual de las botellas terminadas.</p>
         <p class="cy-value" data-i18n="cy_value">Un fabricante identificable, una cadena de producción controlada y un control único sobre las etapas clave.</p>
         </aside>
       </div>
