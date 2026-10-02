@@ -18,7 +18,7 @@
 #mftech .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
 #mftech section{padding:40px 0;border-top:1px solid var(--line)}
 #mftech h1,#mftech h2{font-family:var(--serif);font-weight:400;line-height:1.12}
-#mftech h2{font-size:clamp(22px,2.6vw,34px);text-transform:uppercase;letter-spacing:.01em}
+#mftech h2{font-size:clamp(22px,2.6vw,34px);text-transform:uppercase;letter-spacing:.01em;padding-top:16px;border-top:2px solid var(--gold);display:inline-block}
 #mftech .label{font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
 #mftech .label::before{content:"— ";color:var(--gold)}
 #mftech p{color:var(--muted);font-size:15.5px;line-height:1.62}
@@ -38,25 +38,38 @@
 
 #mftech .top{padding:34px 0 40px;border-top:0}
 #mftech .top h1{font-size:clamp(25px,2.4vw,32px);margin-top:10px;text-transform:uppercase}
-#mftech .cols{display:grid;grid-template-columns:0.84fr 1fr;gap:44px;align-items:start;margin-top:24px}
+#mftech .cols{display:grid;grid-template-columns:0.9fr 1fr;gap:44px;align-items:stretch;margin-top:24px}
+#mftech .cols figure{height:100%;min-height:360px}
+#mftech .cols figure img{height:100%;object-fit:cover;object-position:center}
 #mftech .intro{font-family:var(--serif);font-size:clamp(17px,1.7vw,21px);line-height:1.46;color:var(--ink)}
 #mftech .cols .body{margin-top:14px}
 #mftech figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line)}
 
-#mftech .zone{display:grid;grid-template-columns:1.12fr 0.88fr;gap:40px;margin-top:20px;align-items:start}
-#mftech .zone figure img{background:#fff;border-radius:6px;aspect-ratio:auto;object-fit:contain;width:100%}
-#mftech ol.z{list-style:none;counter-reset:z}
-#mftech ol.z li{counter-increment:z;position:relative;padding:4px 0 4px 30px;color:var(--muted);font-size:15px;line-height:1.5}
+#mftech .zone{display:block;margin-top:20px}
+#mftech .zone figure{margin:0}
+#mftech .zone figure img{background:#fff;border-radius:6px;aspect-ratio:auto;object-fit:contain;width:100%;height:auto}
+#mftech ol.z{list-style:none;counter-reset:z;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);column-count:3;column-gap:44px}
+#mftech ol.z li{counter-increment:z;position:relative;padding:7px 0 7px 32px;color:var(--muted);font-size:14.5px;line-height:1.52;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid}
 
-#mftech ol.z li::before{content:counter(z) ".";position:absolute;left:0;top:5px;font-family:var(--mono);font-size:14px;color:var(--gold)}
+#mftech ol.z li::before{content:counter(z) ".";position:absolute;left:0;top:8px;font-family:var(--mono);font-size:13px;color:var(--gold)}
+@media (max-width:900px){#mftech ol.z{column-count:2;column-gap:32px}}
+@media (max-width:620px){#mftech ol.z{column-count:1}}
 
 #mftech .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
 #mftech .strip img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:0;border:0;display:block}
 
-#mftech .proc{margin-top:18px;max-width:none}
-#mftech .proc p{font-size:15.5px;line-height:1.62}
-#mftech .note{margin:14px 0;padding:13px 18px;border-left:2px solid var(--gold);background:var(--bg2);border-radius:0 8px 8px 0}
-#mftech .note p{font-size:14.5px;color:var(--muted2);line-height:1.6}
+#mftech .proc{margin-top:26px;max-width:none}
+#mftech .proc p{font-size:15.5px;line-height:1.62;max-width:880px}
+#mftech .proc h3{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:40px 0 16px;padding-top:18px;border-top:1px solid var(--line);position:relative}
+#mftech .proc h3::after{content:"";position:absolute;top:-1px;left:0;width:46px;height:2px;background:var(--gold)}
+#mftech .proc h3:first-child{margin-top:4px}
+#mftech .keys{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:22px 0 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#mftech .keys li{padding:0 22px;border-left:1px solid var(--line)}
+#mftech .keys li:first-child{border-left:0;padding-left:0}
+#mftech .keys b{display:block;font-family:var(--serif);font-size:25px;line-height:1.1;color:var(--gold);font-weight:600}
+#mftech .keys span{display:block;margin-top:7px;font-size:13.5px;line-height:1.45;color:var(--muted2)}
+@media (max-width:860px){#mftech .keys{grid-template-columns:repeat(2,1fr);gap:20px 0}#mftech .keys li:nth-child(odd){border-left:0;padding-left:0}}
+@media (max-width:460px){#mftech .keys{grid-template-columns:1fr}#mftech .keys li{border-left:0;padding-left:0}}
 
 #mftech .cta{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:26px 30px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
 #mftech .cta h2{font-size:clamp(22px,2.6vw,32px);text-transform:none}
@@ -72,6 +85,8 @@
   #mftech section{padding:34px 0}
   #mftech .cta{grid-template-columns:1fr;gap:18px}
   #mftech .cols,#mftech .zone{grid-template-columns:1fr;gap:30px}
+  #mftech .cols figure{height:auto;min-height:0}
+  #mftech .cols figure img{height:auto;object-fit:contain}
   #mftech .cta{padding:30px}
 }
 @media (max-width:560px){
@@ -157,12 +172,25 @@
 <section>
   <div class="wrap">
     <h2 data-i18n="c_h2">Tecnolog&iacute;a del proceso</h2>
+    <ul class="keys">
+      <li><b data-i18n="k1n">6</b><span data-i18n="k1">&aacute;reas productivas principales</span></li>
+      <li><b data-i18n="k2n">40 dal/h</b><span data-i18n="k2">velocidad m&aacute;xima de filtraci&oacute;n seg&uacute;n reglamento</span></li>
+      <li><b data-i18n="k3n">0,2 &micro;m</b><span data-i18n="k3">filtro de pulido antes del embotellado</span></li>
+      <li><b data-i18n="k4n">3</b><span data-i18n="k4">l&iacute;neas autom&aacute;ticas KOSME</span></li>
+    </ul>
     <div class="proc">
-      <p data-i18n="c1"></p><p data-i18n="c2"></p><p data-i18n="c3"></p><p data-i18n="c4"></p>
-      <p data-i18n="c5"></p><p data-i18n="c6"></p><p data-i18n="c7"></p><p data-i18n="c8"></p>
-      <p data-i18n="c9"></p><p data-i18n="c10"></p><p data-i18n="c11"></p><p data-i18n="c12"></p>
-      <div class="note"><p data-i18n="c_note"></p></div>
-      <p style="margin-top:22px" data-i18n="c13"></p><p data-i18n="c14"></p><p data-i18n="c15"></p>
+      <h3 data-i18n="h_a">Organizaci&oacute;n de la producci&oacute;n</h3>
+      <p data-i18n="c1"></p><p data-i18n="c2"></p>
+      <h3 data-i18n="h_b">Mezcla y filtraci&oacute;n</h3>
+      <p data-i18n="c3"></p><p data-i18n="c4"></p><p data-i18n="c5"></p><p data-i18n="c6"></p><p data-i18n="c7"></p>
+      <h3 data-i18n="h_c">Control de calidad</h3>
+      <p data-i18n="c8"></p><p data-i18n="c9"></p>
+      <h3 data-i18n="h_d">Envase, embalaje y conservaci&oacute;n en planta</h3>
+      <p data-i18n="c10"></p><p data-i18n="c11"></p><p data-i18n="c12"></p>
+      <h3 data-i18n="h_e">Embotellado y despacho</h3>
+      <p data-i18n="c13"></p><p data-i18n="c14"></p>
+      <h3 data-i18n="h_f">&Aacute;rea de licores</h3>
+      <p data-i18n="c15"></p>
     </div>
   </div>
 </section>
@@ -219,6 +247,7 @@
     st1:'Сортировочный чан', st2:'Водоподготовка и обратный осмос', st3:'Общий вид производственной линии',
     st4:'Бутылки на конвейере', st5:'Карусель розлива', st6:'Готовая продукция на линии',
     c_h2:'Технология процесса',
+    h_a:'Организация производства', h_b:'Смешивание и фильтрация', h_c:'Контроль качества', h_d:'Тара, упаковка и хранение на заводе', h_e:'Розлив и отгрузка', h_f:'Ликёрный участок', k1n:'6', k1:'основных производственных участков', k2n:'40 дал/ч', k2:'предельная скорость фильтрации по технологическому регламенту', k3n:'0,2 мкм', k3:'полировочный фильтр перед розливом', k4n:'3', k4:'автоматические линии KOSME',
     c1:'Техническую и технологическую часть Брестского ликеро-водочного завода обеспечивают несколько участков, которые входят в службы главного энергетика, главного механика и инженера по механизации и автоматизации производственных процессов. Наряду с довольно стандартной структурой на «Белалко» есть и уникальные подразделения — например, участок по выращиванию трав. Его продукция нужна для изготовления особых водок и ликёров.',
     c2:'Важнейших производственных участков шесть, включая отпускной участок и центральный склад. Самый большой — водочный: он объединяет сразу несколько звеньев технологической цепочки и предельно насыщен сложным оборудованием.',
     c3:'Один из самых ответственных этапов производства изделия, той же водки, — момент смешения спирта с водой и последующего добавления ингредиентов. Вслед за ним смесь очищается.',
@@ -231,7 +260,6 @@
     c10:'Потребительской тарой для водки служат бутылки из полубелого или обесцвеченного стекла. Лишь некоторые высококачественные напитки разливают в художественно оформленные, сувенирные стеклянные, фарфоровые и фаянсовые бутылки и графины различной формы.',
     c11:'Стекло бутылок должно быть термически и химически устойчивым. Стандарты предусматривают допустимые отклонения фактического объёма бутылок от номинального.',
     c12:'Водки и водки особые хранят при температуре от минус 5 до плюс 25, при этом минимальный срок хранения — не меньше 12 месяцев. Оптимальная температура хранения водочных изделий 10–20 °C, относительная влажность воздуха не выше 85 %. При перевозке, как и на складе, водочные бутылки должны находиться в вертикальном положении. В процессе транспортирования и погрузочно-разгрузочных операций изделия предохраняют от действия света, низких температур и атмосферных осадков. Поставщик должен гарантировать соответствие изделий стандарту при соблюдении потребителем условий хранения.',
-    c_note:'Абзац приведён так, как его публикует завод в разделе «Технология». Условия хранения и срок годности конкретной позиции MASTEFI определяются её действующей спецификацией, а не этим описанием.',
     c13:'Если взглянуть на схему производственной зоны, легко заметить, что направлений для готовой водки два: экспортное отделение и основной цех розлива, которые для наглядности изображены отдельными объектами. Регулировать подачу позволяет специальная распределительная панель — своеобразный пульт управления трубопроводами.',
     c14:'В цеху розлива установлены три автоматические линии известной итальянской фирмы KOSME, одного из мировых лидеров по выпуску специализированного оборудования для индустрии алкогольных напитков. При одновременной работе в цеху может разливаться три различных сорта водки. Возле каждой линии есть рабочее место, на котором производится визуальная оценка продукции: при малейшем отклонении от нормы дефектные изделия снимаются с конвейера. Следует отметить, что даже в цеху розлива спиртные напитки продолжают совершенствоваться — непосредственно за вводным продуктопроводом установлен так называемый полировочный фильтр с рейтингом 0,2 микрона. Из жидкости удаляются совершенно невидимые, мельчайшие частицы, в результате чего водка приобретает кристальную прозрачность.',
     c15:'Ликёрный участок, как и водочный, является ядром производственной зоны завода. В его составе несколько специализированных отделений, а продукция, которая вырабатывается здесь, составляет более половины всего ассортиментного перечня завода. Производство включает полный цикл и начинается с базовых вещей: спирта и очищенной воды, получаемых по продуктопроводам. Важнейшие ингредиенты будущих напитков готовятся здесь же. Сироповарочное отделение производит сахарные и молочно-сахарные сиропы для эмульсионных ликёров, бальзамов и других изделий, а настойное отделение — настои, которые применяются на заводе исключительно широко. Как правило, основой для них служит натуральное сырьё: кроме трав, настои готовятся на ягодах, кореньях и плодах.',
@@ -261,6 +289,7 @@
     st1:'Blending tank', st2:'Water preparation and reverse osmosis', st3:'General view of the production line',
     st4:'Bottles on the conveyor', st5:'Filling carousel', st6:'Finished product on the line',
     c_h2:'The process',
+    h_a:'Production organisation', h_b:'Blending and filtration', h_c:'Quality control', h_d:'Glass, packaging and storage at the plant', h_e:'Bottling and dispatch', h_f:'Liqueur area', k1n:'6', k1:'main production areas', k2n:'40 dal/h', k2:'maximum filtration rate under the technological regulation', k3n:'0.2 µm', k3:'polishing filter before bottling', k4n:'3', k4:'automatic KOSME lines',
     c1:'The engineering and technological side of the Brest distillery is run by several areas within the services of the chief power engineer, the chief mechanic and the engineer for mechanisation and automation of production. Alongside a fairly standard structure, Belalco also has unique units, for instance a herb growing area. Its output is needed for the special vodkas and liqueurs.',
     c2:'There are six key production areas, including the dispatch area and the central warehouse. The largest is the vodka area: it brings together several links of the technological chain at once and is densely packed with complex equipment.',
     c3:'One of the most critical stages in making the product, vodka included, is the moment the spirit is combined with water and the ingredients are added afterwards. Right after it, the blend is purified.',
@@ -273,7 +302,6 @@
     c10:'Consumer packaging for vodka consists of bottles made of half-white or decolourised glass. Only some high-quality drinks are filled into artistically designed souvenir bottles and decanters of various shapes, made of glass, porcelain or faience.',
     c11:'The glass of the bottles has to be thermally and chemically stable. The standards set the permitted deviations of the actual bottle volume from the nominal one.',
     c12:'Vodkas and special vodkas are stored at temperatures from minus 5 to plus 25, with a minimum shelf life of no less than 12 months. The optimal storage temperature for vodka products is 10 °C to 20 °C and relative humidity no higher than 85 %. In transport, as in the warehouse, vodka bottles must stand upright. During transportation and loading operations the products are protected from light, low temperatures and precipitation. The supplier guarantees that the products conform to the standard provided the consumer observes the storage conditions.',
-    c_note:'This paragraph is given as the distillery publishes it in its Technology section. The storage conditions and shelf life of a specific MASTEFI item are set by its current specification, not by this description.',
     c13:'Looking at the layout of the production area, it is easy to see that finished vodka has two destinations: the export section and the main bottling hall, drawn as separate objects for clarity. The flow is regulated by a dedicated distribution panel, a kind of control desk for the pipelines.',
     c14:'Three automatic lines by the well-known Italian company KOSME, one of the world leaders in specialised equipment for the spirits industry, are installed in the bottling hall. Working at the same time, the hall can bottle three different vodka varieties. Next to each line there is a workstation where the product is assessed visually: at the slightest deviation from the norm, defective units are taken off the conveyor. It is worth noting that even in the bottling hall the spirits keep improving, as a so-called polishing filter rated at 0.2 micron is installed immediately after the inlet pipeline. The smallest, completely invisible particles are removed from the liquid, and the vodka takes on a crystal clarity.',
     c15:'The liqueur area, like the vodka area, is a core of the production zone. It contains several specialised sections, and the output made here accounts for more than half of the entire product range of the distillery. Production covers the full cycle and starts from the basics: spirit and purified water delivered through the pipelines. The most important ingredients of the future drinks are prepared here as well. The syrup section produces sugar and milk-sugar syrups for emulsion liqueurs, balsams and other products, while the infusion section makes the infusions used at the distillery exceptionally widely. As a rule they are based on natural raw material: besides herbs, infusions are made on berries, roots and fruit.',
@@ -303,6 +331,7 @@
     st1:'Tanque de mezcla', st2:'Preparación de agua y ósmosis inversa', st3:'Vista general de la línea de producción',
     st4:'Botellas en el transportador', st5:'Carrusel de llenado', st6:'Producto terminado en la línea',
     c_h2:'Tecnología del proceso',
+    h_a:'Organización de la producción', h_b:'Mezcla y filtración', h_c:'Control de calidad', h_d:'Envase, embalaje y conservación en planta', h_e:'Embotellado y despacho', h_f:'Área de licores', k1n:'6', k1:'áreas productivas principales', k2n:'40 dal/h', k2:'velocidad máxima de filtración según el reglamento tecnológico', k3n:'0,2 µm', k3:'filtro de pulido antes del embotellado', k4n:'3', k4:'líneas automáticas KOSME',
     c1:'La parte técnica y tecnológica de la destilería de Brest está a cargo de varias áreas que forman parte de los servicios del ingeniero jefe de energía, el mecánico jefe y el ingeniero de mecanización y automatización de los procesos productivos. Junto a una estructura bastante estándar, Belalco cuenta además con unidades singulares, por ejemplo un área de cultivo de hierbas. Su producción es necesaria para elaborar los vodkas especiales y los licores.',
     c2:'Las áreas productivas clave son seis, incluidas el área de despacho y el almacén central. La mayor es la de vodka: reúne a la vez varios eslabones de la cadena tecnológica y está densamente equipada con maquinaria compleja.',
     c3:'Una de las etapas más delicadas de la elaboración del producto, el vodka incluido, es el momento en que el alcohol se une con el agua y después se incorporan los ingredientes. Inmediatamente después, la mezcla se purifica.',
@@ -315,7 +344,6 @@
     c10:'El envase de consumo del vodka son botellas de vidrio semiblanco o decolorado. Solo algunas bebidas de alta calidad se envasan en botellas y garrafas de souvenir de diseño artístico y formas diversas, de vidrio, porcelana o loza.',
     c11:'El vidrio de las botellas debe ser térmica y químicamente estable. Las normas establecen las desviaciones admisibles del volumen real de las botellas respecto al nominal.',
     c12:'Los vodkas y los vodkas especiales se conservan a temperaturas de menos 5 a más 25, con una vida útil mínima no inferior a 12 meses. La temperatura óptima de conservación de los productos de vodka es de 10 °C a 20 °C y la humedad relativa no superior al 85 %. En el transporte, igual que en el almacén, las botellas deben mantenerse en posición vertical. Durante el transporte y las operaciones de carga y descarga los productos se protegen de la luz, de las bajas temperaturas y de las precipitaciones. El proveedor garantiza la conformidad de los productos con la norma siempre que el consumidor respete las condiciones de conservación.',
-    c_note:'Este párrafo se reproduce tal como lo publica la destilería en su sección de Tecnología. Las condiciones de conservación y la vida útil de una referencia concreta de MASTEFI las fija su especificación vigente, no esta descripción.',
     c13:'Al mirar el esquema del área de producción se aprecia con facilidad que el vodka terminado tiene dos destinos: la sección de exportación y la nave principal de embotellado, representadas como objetos separados para mayor claridad. El flujo se regula mediante un panel de distribución específico, una suerte de pupitre de control de las tuberías.',
     c14:'En la nave de embotellado hay instaladas tres líneas automáticas de la conocida firma italiana KOSME, uno de los líderes mundiales en equipamiento especializado para la industria de bebidas alcohólicas. Trabajando a la vez, la nave puede embotellar tres variedades distintas de vodka. Junto a cada línea hay un puesto de trabajo donde se realiza la evaluación visual del producto: a la menor desviación de la norma, las unidades defectuosas salen del transportador. Conviene señalar que incluso en la nave de embotellado las bebidas siguen perfeccionándose, ya que inmediatamente después de la tubería de entrada se instala el llamado filtro de pulido con un rating de 0,2 micras. Del líquido se retiran las partículas más diminutas, completamente invisibles, y el vodka adquiere una transparencia cristalina.',
     c15:'El área de licores, igual que la de vodka, es un núcleo de la zona productiva de la planta. La integran varias secciones especializadas, y lo que se elabora aquí representa más de la mitad de todo el catálogo de la destilería. La producción abarca el ciclo completo y arranca desde lo básico: el alcohol y el agua purificada que llegan por las tuberías. Los ingredientes más importantes de las futuras bebidas se preparan aquí mismo. La sección de jarabes produce jarabes de azúcar y de azúcar con leche para licores de emulsión, bálsamos y otros productos, mientras que la sección de infusiones elabora las infusiones que en la planta se emplean de forma especialmente amplia. Por regla general se basan en materia prima natural: además de hierbas, las infusiones se preparan con bayas, raíces y frutas.',
@@ -345,6 +373,7 @@
     st1:'Tanque de mistura', st2:'Preparação da água e osmose reversa', st3:'Vista geral da linha de produção',
     st4:'Garrafas na esteira', st5:'Carrossel de enchimento', st6:'Produto acabado na linha',
     c_h2:'Tecnologia do processo',
+    h_a:'Organização da produção', h_b:'Mistura e filtração', h_c:'Controle de qualidade', h_d:'Embalagem e armazenamento na fábrica', h_e:'Engarrafamento e expedição', h_f:'Área de licores', k1n:'6', k1:'áreas produtivas principais', k2n:'40 dal/h', k2:'velocidade máxima de filtração conforme o regulamento tecnológico', k3n:'0,2 µm', k3:'filtro de polimento antes do engarrafamento', k4n:'3', k4:'linhas automáticas KOSME',
     c1:'A parte técnica e tecnológica da destilaria de Brest é assegurada por várias áreas que integram os serviços do engenheiro-chefe de energia, do mecânico-chefe e do engenheiro de mecanização e automação dos processos produtivos. Ao lado de uma estrutura bastante padrão, a Belalco possui também unidades singulares, por exemplo uma área de cultivo de ervas. A sua produção é necessária para elaborar as vodcas especiais e os licores.',
     c2:'As áreas produtivas mais importantes são seis, incluindo a área de expedição e o armazém central. A maior é a de vodca: reúne de uma vez vários elos da cadeia tecnológica e é densamente equipada com maquinário complexo.',
     c3:'Uma das etapas mais delicadas da fabricação do produto, a vodca inclusive, é o momento em que o álcool se une à água e depois se incorporam os ingredientes. Logo em seguida, a mistura é purificada.',
@@ -357,7 +386,6 @@
     c10:'A embalagem de consumo da vodca são garrafas de vidro semibranco ou descolorido. Apenas algumas bebidas de alta qualidade são envasadas em garrafas e garrafões de souvenir com design artístico e formatos variados, de vidro, porcelana ou faiança.',
     c11:'O vidro das garrafas deve ser térmica e quimicamente estável. As normas preveem os desvios admissíveis do volume real das garrafas em relação ao nominal.',
     c12:'As vodcas e as vodcas especiais são armazenadas a temperaturas de menos 5 a mais 25, com prazo mínimo de validade não inferior a 12 meses. A temperatura ideal de armazenamento dos produtos de vodca é de 10 °C a 20 °C e a umidade relativa não superior a 85 %. No transporte, assim como no armazém, as garrafas devem ficar na posição vertical. Durante o transporte e as operações de carga e descarga os produtos são protegidos da luz, de baixas temperaturas e de precipitação. O fornecedor garante a conformidade dos produtos com a norma desde que o consumidor respeite as condições de armazenamento.',
-    c_note:'Este parágrafo é reproduzido tal como a destilaria o publica na seção de Tecnologia. As condições de armazenamento e a validade de um item específico da MASTEFI são definidas pela sua especificação vigente, e não por esta descrição.',
     c13:'Ao olhar o esquema da área de produção, percebe-se facilmente que a vodca pronta tem dois destinos: a seção de exportação e o galpão principal de engarrafamento, desenhados como objetos separados para maior clareza. O fluxo é regulado por um painel de distribuição específico, uma espécie de mesa de controle das tubulações.',
     c14:'No galpão de engarrafamento estão instaladas três linhas automáticas da conhecida empresa italiana KOSME, uma das líderes mundiais na produção de equipamentos especializados para a indústria de bebidas alcoólicas. Trabalhando ao mesmo tempo, o galpão pode engarrafar três variedades diferentes de vodca. Junto a cada linha há um posto de trabalho onde se faz a avaliação visual do produto: ao menor desvio da norma, as unidades defeituosas saem da esteira. Vale notar que mesmo no galpão de engarrafamento as bebidas continuam a ser aperfeiçoadas, pois logo após a tubulação de entrada está instalado o chamado filtro de polimento com rating de 0,2 mícron. Do líquido são removidas as partículas mais ínfimas, totalmente invisíveis, e a vodca ganha uma transparência cristalina.',
     c15:'A área de licores, assim como a de vodca, é um núcleo da zona produtiva da fábrica. Ela reúne várias seções especializadas, e o que se elabora ali representa mais da metade de todo o catálogo da destilaria. A produção abrange o ciclo completo e começa pelo básico: o álcool e a água purificada que chegam pelas tubulações. Os ingredientes mais importantes das futuras bebidas são preparados ali mesmo. A seção de xaropes produz xaropes de açúcar e de açúcar com leite para licores de emulsão, bálsamos e outros produtos, enquanto a seção de infusões elabora as infusões usadas na fábrica de forma especialmente ampla. Via de regra elas se baseiam em matéria-prima natural: além de ervas, as infusões são preparadas com frutas vermelhas, raízes e frutos.',
