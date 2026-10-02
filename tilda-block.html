@@ -29,6 +29,8 @@
 /* ---------- Markets + integrated production (added 02.10.2026) ---------- */
 #mastefi .mk-line{font-family:var(--serif);font-size:clamp(19px,2.3vw,30px);line-height:1.6;color:var(--ink);margin-top:26px;max-width:34ch}
 #mastefi .mk-rule{width:64px;height:2px;background:var(--gold);margin-top:30px}
+#mastefi #markets{position:relative;background-image:linear-gradient(90deg,rgba(13,15,18,.96) 0%,rgba(13,15,18,.88) 38%,rgba(13,15,18,.55) 70%,rgba(13,15,18,.45) 100%),url('https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/port-bg.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat}
+@media (max-width:760px){#mastefi #markets{background-image:linear-gradient(180deg,rgba(13,15,18,.94) 0%,rgba(13,15,18,.86) 55%,rgba(13,15,18,.62) 100%),url('https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/port-bg.jpg');background-position:center}}
 #mastefi .cy-h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:18ch}
 #mastefi .cy-sub{margin-top:18px;max-width:52ch;font-size:19px;font-weight:600;color:var(--ink)}
 #mastefi .btn-tech{margin-top:28px;padding:16px 30px;font-size:16px}
@@ -707,6 +709,7 @@
       <a href="#why" data-i18n="nav_importers">Distribuidores</a>
       <a href="#horeca" data-i18n="nav_horeca">HoReCa</a>
       <a href="#privatelabel" data-i18n="nav_pl">Private Label</a>
+      <a href="/vodka/technology" data-i18n="nav_tech">Tecnolog&iacute;a</a>
       <a href="#manufacturer" data-i18n="nav_about">Sobre MASTEFI</a>
       <a href="#contact" data-i18n="nav_contact">Contacto</a>
     </nav>
@@ -728,6 +731,7 @@
   <a href="#why" data-i18n="nav_importers">Distribuidores</a>
   <a href="#horeca" data-i18n="nav_horeca">HoReCa</a>
   <a href="#privatelabel" data-i18n="nav_pl">Private Label</a>
+  <a href="/vodka/technology" data-i18n="nav_tech">Tecnolog&iacute;a</a>
   <a href="#manufacturer" data-i18n="nav_about">Sobre MASTEFI</a>
   <a href="#contact" data-i18n="nav_contact">Contacto</a>
   <a href="/" data-i18n="back_site">← Al sitio</a>
@@ -1298,7 +1302,7 @@ var I18N = {
  es:{}, /* ES lives in the HTML as default */
  en:{
   age_title:'B2B site for trade professionals', age_text:'This website is intended for adults and beverage-trade professionals. Please confirm you are of legal drinking age in your jurisdiction.', age_yes:'I am of legal age · Enter', age_no:'Exit',
-  nav_portfolio:'Portfolio', nav_importers:'Distributors', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'About MASTEFI', nav_contact:'Contact', cta_catalog:'Request catalogue',
+  nav_portfolio:'Portfolio', nav_importers:'Distributors', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'About MASTEFI', nav_contact:'Contact', nav_tech:'Technology', cta_catalog:'Request catalogue',
   hero_eyebrow:'EXCLUSIVE REPRESENTATION · LATIN AMERICA', hero_h1:'Belarusian vodka portfolio for Latin America.',
   hero_status:'MASTEFI Export Spirits is the <b>exclusive representative of the Belalco export portfolio</b> in Latin America. One team for product selection, export documentation, logistics and commercial launch support.',
   hero_emotional:'Northern precision. Latin American scale.', hero_sub:'',
@@ -1333,7 +1337,7 @@ var I18N = {
  },
  pt:{
   age_title:'Site B2B para profissionais do setor', age_text:'Este site é destinado a maiores de idade e a profissionais do comércio de bebidas. Confirme que tem a idade legal para consumir álcool na sua jurisdição.', age_yes:'Sou maior de idade · Entrar', age_no:'Sair',
-  nav_portfolio:'Portfólio', nav_importers:'Distribuidores', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'Sobre a MASTEFI', nav_contact:'Contato', cta_catalog:'Solicitar catálogo',
+  nav_portfolio:'Portfólio', nav_importers:'Distribuidores', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'Sobre a MASTEFI', nav_contact:'Contato', nav_tech:'Tecnologia', cta_catalog:'Solicitar catálogo',
   hero_eyebrow:'REPRESENTAÇÃO EXCLUSIVA · AMÉRICA LATINA', hero_h1:'Portfólio de vodca bielorrussa para a América Latina.',
   hero_status:'A MASTEFI Export Spirits é a <b>representante exclusiva do portfólio de exportação da Belalco</b> na América Latina. Uma única equipe para seleção de produtos, documentação de exportação, logística e lançamento comercial.',
   hero_emotional:'Precisão do norte. Escala latino-americana.', hero_sub:'',
@@ -1368,7 +1372,7 @@ var I18N = {
  },
  ru:{
   age_title:'B2B-сайт для профессионалов отрасли', age_text:'Сайт предназначен для совершеннолетних и профессионалов алкогольной торговли. Подтвердите, что вы достигли разрешённого возраста употребления алкоголя в вашей юрисдикции.', age_yes:'Мне есть 18 · Войти', age_no:'Выйти',
-  nav_portfolio:'Портфель', nav_importers:'Импортёрам', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'О компании', nav_contact:'Контакты', cta_catalog:'Запросить каталог',
+  nav_portfolio:'Портфель', nav_importers:'Импортёрам', nav_horeca:'HoReCa', nav_pl:'Private Label', nav_about:'О компании', nav_contact:'Контакты', nav_tech:'Технология', cta_catalog:'Запросить каталог',
   hero_eyebrow:'ЭКСКЛЮЗИВНОЕ ПРЕДСТАВИТЕЛЬСТВО · ЛАТИНСКАЯ АМЕРИКА', hero_h1:'Портфель белорусской водки для Латинской Америки.',
   hero_status:'MASTEFI Export Spirits — <b>эксклюзивный представитель экспортного портфеля «Белалко»</b> в Латинской Америке. Одна команда для выбора продукции, экспортной документации, логистики и коммерческого запуска.',
   hero_emotional:'Северная точность. Масштаб Латинской Америки.', hero_sub:'',
