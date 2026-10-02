@@ -26,6 +26,28 @@
 #mastefi .eyebrow{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
 #mastefi .section-label{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
 #mastefi section{padding:92px 0;border-top:1px solid var(--line)}
+/* ---------- Markets + integrated production (added 02.10.2026) ---------- */
+#mastefi .mk-line{font-family:var(--serif);font-size:clamp(19px,2.3vw,30px);line-height:1.6;color:var(--ink);margin-top:26px;max-width:34ch}
+#mastefi .mk-rule{width:64px;height:2px;background:var(--gold);margin-top:30px}
+#mastefi .cy-h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:18ch}
+#mastefi .cy-sub{margin-top:18px;max-width:52ch;font-size:19px;font-weight:600;color:var(--ink)}
+#mastefi .btn-tech{margin-top:28px;padding:16px 30px;font-size:16px}
+#mastefi .cy-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;margin-top:46px;align-items:start}
+#mastefi .cy-body p{color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px}
+#mastefi .cy-body p:last-child{margin-bottom:0}
+#mastefi .cy-side{background:var(--bg2);border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:14px;padding:30px 28px}
+#mastefi .cy-chain-label{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+#mastefi .cy-chain{font-family:var(--mono);font-size:14px;line-height:2.1;color:var(--ink);margin:18px 0 0}
+#mastefi .cy-value{margin:22px 0 0;padding-top:20px;border-top:1px solid var(--line);color:var(--muted2);font-size:15px;line-height:1.65}
+#mastefi .cy-quote{margin:46px 0 0;padding:26px 0 26px 28px;border-left:2px solid var(--lime);font-family:var(--serif);font-size:clamp(19px,2.1vw,26px);line-height:1.5;color:var(--ink);max-width:46ch}
+#mastefi .cy-tech-label{margin-top:56px}
+#mastefi .cy-tech{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}
+#mastefi .cy-card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+#mastefi .cy-card i{display:block;font-style:normal;font-family:var(--serif);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+#mastefi .cy-card b{display:block;font-size:17px;margin:14px 0 8px;color:var(--ink)}
+#mastefi .cy-card span{display:block;font-size:14.5px;line-height:1.6;color:var(--muted2)}
+@media (max-width:900px){#mastefi .cy-grid{grid-template-columns:1fr;gap:34px}#mastefi .cy-tech{grid-template-columns:1fr}}
+@media (max-width:560px){#mastefi .mk-line{max-width:none}#mastefi .cy-side{padding:24px 20px}#mastefi .cy-quote{padding-left:20px;margin-top:36px}}
 #mastefi .lead{color:var(--muted);font-size:18px;max-width:60ch}
 
 /* ---------- Buttons ---------- */
@@ -781,6 +803,46 @@
   </div>
 </section>
 
+
+<!-- ============ MARKETS (9 countries) ============ -->
+<section id="markets">
+  <div class="wrap">
+    <div class="section-label" data-i18n="mk_label">Distribución exclusiva</div>
+    <h2 style="font-size:clamp(28px,3.4vw,42px);margin-top:14px;max-width:22ch" data-i18n="mk_h2">Distribución exclusiva de Belalco en 9 mercados de América Latina</h2>
+    <div class="mk-rule"></div>
+    <p class="mk-line" data-i18n="mk_list">Colombia · Argentina · Chile · Venezuela · Brasil · Ecuador · Panamá · Perú · Bolivia</p>
+  </div>
+</section>
+
+<!-- ============ INTEGRATED PRODUCTION ============ -->
+<section id="cycle">
+  <div class="wrap">
+    <div class="section-label" data-i18n="cy_label">Producción integrada</div>
+    <h2 class="cy-h2" data-i18n="cy_h2">Una sola planta. Una sola cadena de producción. Un solo control.</h2>
+    <p class="cy-sub" data-i18n="cy_sub">Desde su propia fuente de agua y la producción de alcohol hasta la filtración, el control y el embotellado automático.</p>
+    <a class="btn btn-tech" href="/vodka/technology" data-i18n="tech_btn">Tecnología de la planta &rarr;</a>
+    <div class="cy-grid">
+      <div class="cy-body">
+        <p data-i18n="cy_p1">Las etapas clave de producción se concentran en una sola planta de Belalco en Brest. La destilería cuenta con su propia base de producción de alcohol y elabora alcohol etílico rectificado y destilados de cereal. El portafolio de exportación utiliza alcohol rectificado clase «Lux» de materia prima alimentaria de cereal. El agua proviene de su propia fuente artesiana y recibe un tratamiento previo a la mezcla: ablandamiento por intercambio iónico y purificación por ósmosis inversa.</p>
+        <p data-i18n="cy_p2">Una vez unidos el agua preparada y el alcohol, se controla la graduación del lote. Después, la mezcla pasa por arena de cuarzo, carbón activado, filtros finales de arena, filtración por membrana y pulido fino de 0,2 µm.</p>
+        <p data-i18n="cy_p3">La etapa final ocurre en la misma planta: el producto se embotella en tres líneas automáticas KOSME, cada una con un punto de control visual de las botellas terminadas.</p>
+      </div>
+      <aside class="cy-side">
+        <div class="cy-chain-label" data-i18n="cy_chain_label">Una sola cadena de producción</div>
+        <p class="cy-chain" data-i18n="cy_chain">Fuente de agua → preparación del agua → producción de alcohol → mezcla → filtración → control → embotellado</p>
+        <p class="cy-value" data-i18n="cy_value">Un fabricante identificable, una cadena de producción controlada y un control único sobre las etapas clave.</p>
+      </aside>
+    </div>
+    <blockquote class="cy-quote" data-i18n="cy_quote">No es solo embotellar un producto terminado. La base productiva abarca agua, alcohol, tratamiento, filtración y embotellado en una sola planta.</blockquote>
+    <div class="section-label cy-tech-label" data-i18n="cy_tech">Tecnologías de las líneas</div>
+    <div class="cy-tech">
+      <div class="cy-card"><i>Tesla</i><b>Magnetic Shot Technology</b><span data-i18n="tc1_d">Ablandamiento adicional del agua.</span></div>
+      <div class="cy-card"><i>Glubina</i><b>Black &amp; White Pearl Filtration</b><span data-i18n="tc2_d">Filtración con perla negra y blanca.</span></div>
+      <div class="cy-card"><i>Studinka</i><b>Cold Treatment</b><span data-i18n="tc3_d">Una tecnología específica de tratamiento en frío.</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PORTFOLIO ============ -->
 <section id="portfolio">
   <div class="wrap">
@@ -1254,6 +1316,7 @@ var I18N = {
   pl_label:'Private Label', pl_h2:'Your brand. Belalco production base. MASTEFI export expertise.',
   pl1_t:'Brief & positioning', pl1_p:'Country, channel, price segment, target buyer.', pl2_t:'Recipe & format', pl2_p:'Category, strength, profile, volume.', pl3_t:'Packaging', pl3_p:'Bottle, closure, label, carton, gift box.', pl4_t:'Regulatory adaptation', pl4_p:'Language, mandatory information, market, labeling.', pl5_t:'Samples', pl5_p:'Test version, approval, final sign-off.', pl6_t:'Production & export', pl6_p:'Production, packaging, documents, export batch.', pl_cta:'Discuss Private Label',
   mfr_label:'Production base', mfr_h2:'JSC “Brest Distillery Belalco”', mfr_p:'A plant with a verifiable production history. MASTEFI provides commercial access to its export portfolio for Latin America.',
+  mk_label:'Exclusive distribution', mk_h2:'Exclusive Belalco distribution across 9 Latin American markets', mk_list:'Colombia · Argentina · Chile · Venezuela · Brazil · Ecuador · Panama · Peru · Bolivia', cy_label:'Integrated production', cy_h2:'One distillery. One production chain. One point of control.', cy_sub:'From its own water source and spirit production through filtration, control and automated bottling.', cy_p1:'The key production stages are concentrated at a single Belalco production site in Brest. The distillery has its own spirit production base and makes rectified ethyl alcohol and grain distillates. The export portfolio uses «Lux» grade rectified spirit from food-grade grain. Water comes from the distillery own artesian source and is treated before blending: softened by ion exchange and purified by reverse osmosis.', cy_p2:'Once the prepared water and the spirit are combined, the strength of the batch is checked. The blend then passes through quartz sand, activated carbon, final sand filters, membrane filtration and fine polishing at 0.2 µm.', cy_p3:'The final stage happens on the same site: the product is bottled on three automatic KOSME lines, each with a visual inspection point for the finished bottles.', cy_chain_label:'One production chain', cy_chain:'Water source → water preparation → spirit production → blending → filtration → control → bottling', cy_value:'A clearly identified manufacturer, a controlled production chain and single-point control over the key stages.', cy_quote:'Not simply bottling a finished product. The production base covers water, spirit, treatment, filtration and bottling on one site.', cy_tech:'Line technologies', tc1_d:'Additional water softening.', tc2_d:'Filtration with black and white pearl.', tc3_d:'A dedicated cold treatment process.', tech_btn:'Factory technology \u2192',
   stat1:'Year Belalco was founded', stat2:'Depth of the artesian well', stat3:'export SKUs', stat3_sub:'7 lines · 15 product variants', mfr_note:'',
   exp_label:'Export readiness', exp_h2:'Ready for international supply.', exp_note:'Exact availability is confirmed per destination market and SKU. Documents are provided on commercial request.', eag_label:'Export at a glance', eag_moq_t:'MOQ', eag_moq_v:'From 6 euro-pallets per order', eag_mix_t:'Mixed SKU', eag_mix_v:'Mixed loading available', eag_20_t:"20' container", eag_20_v:'11 pallets', eag_40_t:"40' container", eag_40_v:'25 pallets', eag_lead_t:'Production lead time', eag_lead_v:'~21 days after prepayment',
   faq_label:'FAQ', faq_h2:'Before you send your request',
@@ -1288,6 +1351,7 @@ var I18N = {
   pl_label:'Private Label', pl_h2:'Sua marca. Base de produção Belalco. Expertise de exportação da MASTEFI.',
   pl1_t:'Briefing e posicionamento', pl1_p:'País, canal, segmento de preço, comprador-alvo.', pl2_t:'Receita e formato', pl2_p:'Categoria, teor alcoólico, perfil, volume.', pl3_t:'Embalagem', pl3_p:'Garrafa, tampa, rótulo, caixa, embalagem de presente.', pl4_t:'Adaptação aos requisitos do mercado', pl4_p:'Idioma, informações obrigatórias, mercado, rotulagem. A possibilidade de adaptação é avaliada individualmente por mercado de destino.', pl5_t:'Amostras e aprovação', pl5_p:'Versão de teste, aprovação, validação final.', pl6_t:'Produção e exportação', pl6_p:'Produção, embalagem, documentos, lote de exportação.', pl_cta:'Falar sobre Private Label',
   mfr_label:'Base de produção', mfr_h2:'JSC “Destilaria de Brest Belalco”', mfr_p:'Uma fábrica com histórico de produção verificável. A MASTEFI oferece acesso comercial ao seu portfólio de exportação para a América Latina.',
+  mk_label:'Distribuição exclusiva', mk_h2:'Distribuição exclusiva da Belalco em 9 mercados da América Latina', mk_list:'Colômbia · Argentina · Chile · Venezuela · Brasil · Equador · Panamá · Peru · Bolívia', cy_label:'Produção integrada', cy_h2:'Uma única planta. Uma única cadeia de produção. Um único controle.', cy_sub:'Da própria fonte de água e da produção de álcool até a filtração, o controle e o engarrafamento automático.', cy_p1:'As etapas essenciais de produção estão concentradas em uma única planta da Belalco em Brest. A destilaria possui base própria de produção de álcool e fabrica álcool etílico retificado e destilados de cereais. O portfólio de exportação usa álcool retificado classe «Lux» de matéria-prima alimentar de cereais. A água vem da própria fonte artesiana e passa por tratamento antes da mistura: abrandamento por troca iônica e purificação por osmose reversa.', cy_p2:'Depois de unir a água preparada e o álcool, o teor alcoólico do lote é controlado. Em seguida, a mistura passa por areia de quartzo, carvão ativado, filtros finais de areia, filtração por membrana e polimento fino de 0,2 µm.', cy_p3:'A etapa final acontece na mesma planta: o produto é engarrafado em três linhas automáticas KOSME, cada uma com um ponto de inspeção visual das garrafas prontas.', cy_chain_label:'Uma única cadeia de produção', cy_chain:'Fonte de água → preparação da água → produção de álcool → mistura → filtração → controle → engarrafamento', cy_value:'Um fabricante identificável, uma cadeia de produção controlada e um controle único sobre as etapas essenciais.', cy_quote:'Não é apenas engarrafar um produto pronto. A base produtiva abrange água, álcool, tratamento, filtração e engarrafamento em uma única planta.', cy_tech:'Tecnologias das linhas', tc1_d:'Abrandamento adicional da água.', tc2_d:'Filtração com pérola preta e branca.', tc3_d:'Uma tecnologia específica de tratamento a frio.', tech_btn:'Tecnologia da fábrica \u2192',
   stat1:'Ano de fundação da Belalco', stat2:'Profundidade do poço artesiano', stat3:'SKUs de exportação', stat3_sub:'7 linhas · 15 referências', mfr_note:'',
   exp_label:'Prontidão para exportação', exp_h2:'Prontos para o fornecimento internacional.', exp_note:'A disponibilidade de documentos, amostras e rotulagem é confirmada por mercado de destino e SKU.', eag_label:'Exportação num relance', eag_moq_t:'MOQ', eag_moq_v:'A partir de 6 europaletes por pedido', eag_mix_t:'SKU mistos', eag_mix_v:'Carga mista disponível', eag_20_t:"Contêiner 20'", eag_20_v:'11 paletes', eag_40_t:"Contêiner 40'", eag_40_v:'25 paletes', eag_lead_t:'Prazo de produção', eag_lead_v:'~21 dias após o adiantamento',
   faq_label:'Perguntas frequentes', faq_h2:'Antes de enviar seu pedido',
@@ -1322,6 +1386,7 @@ var I18N = {
   pl_label:'Private Label / СТМ', pl_h2:'Ваш бренд. Производственная база «Белалко». Экспортная экспертиза MASTEFI.',
   pl1_t:'Задача и позиционирование', pl1_p:'Страна, канал, ценовой сегмент, целевой покупатель.', pl2_t:'Рецептура и формат', pl2_p:'Категория, крепость, профиль, объём.', pl3_t:'Упаковка', pl3_p:'Бутылка, колпачок, этикетка, короб, подарочная упаковка.', pl4_t:'Адаптация под требования рынка', pl4_p:'Язык, обязательная информация, рынок, маркировка. Возможность адаптации рассматривается индивидуально по рынку назначения.', pl5_t:'Образцы и согласование', pl5_p:'Тестовый вариант, согласование, финальное утверждение.', pl6_t:'Производство и экспорт', pl6_p:'Производство, упаковка, документы, экспортная партия.', pl_cta:'Обсудить Private Label',
   mfr_label:'Производственная база', mfr_h2:'ОАО «Брестский ЛВЗ «Белалко»', mfr_p:'Завод с подтверждаемой производственной историей. MASTEFI предоставляет коммерческий доступ к его экспортному портфелю для Латинской Америки.',
+  mk_label:'Эксклюзивная дистрибуция', mk_h2:'Эксклюзивная дистрибуция Belalco в 9 странах Латинской Америки', mk_list:'Колумбия · Аргентина · Чили · Венесуэла · Бразилия · Эквадор · Панама · Перу · Боливия', cy_label:'Интегрированное производство', cy_h2:'Один завод. Одна технологическая цепочка. Один контроль.', cy_sub:'От собственного источника воды и производства спирта до фильтрации, контроля и автоматического розлива.', cy_p1:'Ключевые этапы производства сосредоточены на одной производственной площадке Belalco в Бресте. Завод располагает собственной спиртовой производственной базой и производит ректификованный этиловый спирт и зерновые дистилляты. Для экспортного портфеля используется ректификованный спирт категории «Люкс» из пищевого зернового сырья. Вода поступает из собственного артезианского источника и перед смешиванием проходит технологическую подготовку: умягчение методом катионного обмена и очистку обратным осмосом.', cy_p2:'После соединения подготовленной воды и спирта контролируется крепость партии. Далее смесь проходит последовательную фильтрацию через кварцевый песок, активированный уголь, финальные песчаные фильтры, мембранную фильтрацию и тонкую полировку 0,2 мкм.', cy_p3:'Финальный этап проходит здесь же: продукция разливается на трёх автоматических линиях KOSME, на каждой из которых предусмотрен визуальный контроль готовых бутылок.', cy_chain_label:'Один производственный контур', cy_chain:'Источник воды → подготовка воды → производство спирта → смешивание → фильтрация → контроль → розлив', cy_value:'Понятный производитель, управляемая технологическая цепочка и единый контроль ключевых этапов производства.', cy_quote:'Не просто розлив готового продукта. Производственная база охватывает воду, спирт, технологическую подготовку, фильтрацию и розлив на одной площадке.', cy_tech:'Технологии линеек', tc1_d:'Дополнительное смягчение воды.', tc2_d:'Фильтрация чёрным и белым жемчугом.', tc3_d:'Специальная технология холодной обработки.', tech_btn:'Технология завода \u2192',
   stat1:'Год основания «Белалко»', stat2:'Глубина артезианской скважины', stat3:'экспортных SKU', stat3_sub:'7 линеек · 15 наименований', mfr_note:'',
   exp_label:'Готовность к экспорту', exp_h2:'Готовность к международной поставке.', exp_note:'Доступность документов, образцов и маркировки подтверждается по рынку назначения и SKU.', eag_label:'Экспорт коротко', eag_moq_t:'MOQ', eag_moq_v:'От 6 европаллет на заказ', eag_mix_t:'Смешанный SKU', eag_mix_v:'Смешанная загрузка доступна', eag_20_t:"Контейнер 20'", eag_20_v:'11 паллет', eag_40_t:"Контейнер 40'", eag_40_v:'25 паллет', eag_lead_t:'Срок производства', eag_lead_v:'≈21 день после предоплаты',
   faq_label:'Частые вопросы', faq_h2:'Перед отправкой заявки',

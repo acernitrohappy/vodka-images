@@ -1,0 +1,401 @@
+<div id="mftech" data-lang="es">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+#mftech{
+  --bg:#0d0f12; --bg2:#14161b; --line:rgba(255,255,255,.08);
+  --ink:#f4f3f0; --muted:#c3c7cc; --muted2:#9aa0a7;
+  --lime:#7fbc45; --lime-ink:#0b0d0f; --gold:#c9a24a;
+  --serif:"Fraunces","Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk","Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --container:1180px;
+  font-family:var(--sans);color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;line-height:1.6;font-size:18px;position:relative;overflow-x:hidden;
+}
+#mftech *{box-sizing:border-box;margin:0;padding:0}
+#mftech img{max-width:100%;display:block}
+#mftech a{color:inherit;text-decoration:none}
+#mftech .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+#mftech section{padding:80px 0;border-top:1px solid var(--line)}
+#mftech h1,#mftech h2{font-family:var(--serif);font-weight:400;line-height:1.12}
+#mftech h2{font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;letter-spacing:.01em}
+#mftech .label{font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
+#mftech .label::before{content:"— ";color:var(--gold)}
+#mftech p{color:var(--muted);font-size:17px;line-height:1.78}
+#mftech p + p{margin-top:18px}
+
+#mftech .bar{position:sticky;top:0;z-index:20;background:rgba(13,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#mftech .bar .wrap{display:flex;align-items:center;gap:20px;height:64px}
+#mftech .brand{font-family:var(--serif);font-size:19px;letter-spacing:.04em}
+#mftech .brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;color:var(--muted2);margin-top:2px}
+#mftech .bar nav{margin-left:auto;display:flex;align-items:center;gap:18px}
+#mftech .back{font-size:14px;color:var(--muted);white-space:nowrap}
+#mftech .back:hover{color:var(--ink)}
+#mftech .langs{display:flex;gap:4px}
+#mftech .langs button{font:inherit;font-size:12px;font-weight:600;letter-spacing:.08em;padding:6px 9px;border:0;border-radius:6px;background:transparent;color:var(--muted2);cursor:pointer}
+#mftech .langs button:hover{color:var(--ink)}
+#mftech .langs button[aria-current="true"]{background:var(--lime);color:var(--lime-ink)}
+
+#mftech .top{padding:70px 0 80px;border-top:0}
+#mftech .top h1{font-size:clamp(34px,5vw,62px);margin-top:14px;text-transform:uppercase}
+#mftech .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:start;margin-top:44px}
+#mftech .intro{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);line-height:1.38;color:var(--ink);max-width:30ch}
+#mftech .cols .body{margin-top:26px}
+#mftech figure img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}
+#mftech figcaption{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted2)}
+
+#mftech .zone{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;margin-top:40px;align-items:start}
+#mftech .zone figure img{background:#fff;border-radius:14px}
+#mftech ol.z{list-style:none;counter-reset:z}
+#mftech ol.z li{counter-increment:z;position:relative;padding:13px 0 13px 44px;border-top:1px solid var(--line);color:var(--muted);font-size:15.5px;line-height:1.55}
+#mftech ol.z li:first-child{border-top:0}
+#mftech ol.z li::before{content:counter(z,decimal-leading-zero);position:absolute;left:0;top:13px;font-family:var(--mono);font-size:12px;color:var(--gold)}
+
+#mftech .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+#mftech .strip img{width:100%;height:230px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+
+#mftech .proc{margin-top:36px;max-width:78ch}
+#mftech .proc p{font-size:16.5px}
+#mftech .note{margin-top:22px;padding:18px 22px;border-left:2px solid var(--gold);background:var(--bg2);border-radius:0 10px 10px 0}
+#mftech .note p{font-size:14.5px;color:var(--muted2);line-height:1.6}
+
+#mftech .cta{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:44px;margin-top:8px}
+#mftech .cta h2{font-size:clamp(22px,2.6vw,32px);text-transform:none}
+#mftech .btn{display:inline-flex;align-items:center;gap:.5em;margin-top:22px;padding:14px 26px;border-radius:9px;background:var(--lime);color:var(--lime-ink);font-weight:700;font-size:15px}
+
+#mftech .src{padding:38px 0 70px;border-top:1px solid var(--line)}
+#mftech .src p{font-size:14px;color:var(--muted2)}
+#mftech .src a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+#mftech .warn{margin-top:20px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2)}
+
+@media (max-width:1000px){#mftech .strip{grid-template-columns:repeat(3,1fr)}#mftech .strip img{height:190px}}
+@media (max-width:900px){
+  #mftech section{padding:58px 0}
+  #mftech .cols,#mftech .zone{grid-template-columns:1fr;gap:30px}
+  #mftech .cta{padding:30px}
+}
+@media (max-width:560px){
+  #mftech .strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  #mftech .strip img{height:150px}
+  #mftech .back{display:none}
+}
+</style>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand" href="/vodka">MASTEFI<small>EXPORT SPIRITS</small></a>
+    <nav>
+      <a class="back" href="/vodka" data-i18n="nav_back">&larr; Volver al portafolio</a>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-set="es" aria-current="true">ES</button>
+        <button type="button" data-set="en">EN</button>
+        <button type="button" data-set="pt">PT</button>
+        <button type="button" data-set="ru">RU</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<section class="top">
+  <div class="wrap">
+    <div class="label" data-i18n="t_label">Belalco &middot; Brest</div>
+    <h1 data-i18n="t_h1">Tecnolog&iacute;a de la planta</h1>
+    <div class="cols">
+      <div>
+        <h2 style="font-size:clamp(22px,2.6vw,32px)" data-i18n="a_h2">Producci&oacute;n</h2>
+        <p class="intro" style="margin-top:18px" data-i18n="a_intro">La producci&oacute;n de vodka moderno es un proceso qu&iacute;mico-tecnol&oacute;gico complejo que exige el cumplimiento estricto de la receta y reg&iacute;menes de pureza extrema en todos los componentes de la futura bebida.</p>
+        <div class="body">
+          <p data-i18n="a_p1">Antes de preparar el coupage con alcohol de grano, el agua pasa por una limpieza minuciosa y no recibe tratamiento t&eacute;rmico. Se ablanda y se trata con instalaciones de sodio-cati&oacute;nita y &oacute;smosis inversa. El agua dura est&aacute; sobresaturada de sales de calcio y magnesio, las llamadas sales de dureza, que pueden reaccionar con el alcohol.</p>
+          <p data-i18n="a_p2">En los filtros de primera etapa se carga una resina especial, la cati&oacute;nita. Mediante la reacci&oacute;n, los iones de calcio y magnesio se sustituyen por iones de sodio y el agua se lleva a una dureza admisible. Si la dureza no baja, el filtro se regenera con soluci&oacute;n salina y su capacidad vuelve a saturarse de iones de sodio. Despu&eacute;s el agua ablandada pasa a la instalaci&oacute;n de &oacute;smosis inversa: una presi&oacute;n excesiva, osm&oacute;tica, la obliga a atravesar las celdas de finas membranas alojadas en cilindros de acero. El agua bruta queda pr&aacute;cticamente limpia por completo y lista para mezclarse con el alcohol.</p>
+        </div>
+      </div>
+      <figure>
+        <img data-img="blending-tanks" alt="" data-i18n-alt="a_alt">
+        <figcaption data-i18n="a_cap">&Aacute;rea de vodka de la destiler&iacute;a Belalco</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="b_h2">&Aacute;rea de producci&oacute;n y tecnolog&iacute;a &laquo;Belalco&raquo;</h2>
+    <div class="zone">
+      <figure>
+        <img data-img="production-scheme" alt="" data-i18n-alt="b_alt">
+      </figure>
+      <ol class="z">
+        <li data-i18n="z1">Pozo artesiano</li>
+        <li data-i18n="z2">Preparaci&oacute;n del agua</li>
+        <li data-i18n="z3">Recepci&oacute;n y almacenamiento de alcohol et&iacute;lico rectificado</li>
+        <li data-i18n="z4">Preparaci&oacute;n de la soluci&oacute;n agua-alcohol</li>
+        <li data-i18n="z5">Filtrado y tratamiento de la soluci&oacute;n</li>
+        <li data-i18n="z6">&Aacute;rea de licores: preparaci&oacute;n de infusiones agua-alcohol, alcoholes arom&aacute;ticos, caramelo y dem&aacute;s componentes del producto</li>
+        <li data-i18n="z7">Mezcla final: ajuste del vodka a la graduaci&oacute;n est&aacute;ndar e incorporaci&oacute;n de ingredientes</li>
+        <li data-i18n="z8">Preparaci&oacute;n del coupage y filtraci&oacute;n, maduraci&oacute;n de licores, filtrado</li>
+        <li data-i18n="z9">Nave de embotellado: llenado, envasado, etiquetado</li>
+        <li data-i18n="z10">Secci&oacute;n de souvenirs del &aacute;rea de licores</li>
+        <li data-i18n="z11">&Aacute;rea de despacho: almacenamiento y entrega de producto terminado</li>
+        <li data-i18n="z12">Secci&oacute;n de exportaci&oacute;n del &aacute;rea de vodka</li>
+        <li data-i18n="z13">Almac&eacute;n central</li>
+        <li data-i18n="z14">&Aacute;rea de envases</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="strip">
+      <img data-img="tank-sortirovka" alt="" data-i18n-alt="st1">
+      <img data-img="water-osmosis" alt="" data-i18n-alt="st2">
+      <img data-img="line-hall" alt="" data-i18n-alt="st3">
+      <img data-img="bottles-line" alt="" data-i18n-alt="st4">
+      <img data-img="bottling-carousel" alt="" data-i18n-alt="st5">
+      <img data-img="bottling-caps" alt="" data-i18n-alt="st6">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="c_h2">Tecnolog&iacute;a del proceso</h2>
+    <div class="proc">
+      <p data-i18n="c1"></p><p data-i18n="c2"></p><p data-i18n="c3"></p><p data-i18n="c4"></p>
+      <p data-i18n="c5"></p><p data-i18n="c6"></p><p data-i18n="c7"></p><p data-i18n="c8"></p>
+      <p data-i18n="c9"></p><p data-i18n="c10"></p><p data-i18n="c11"></p><p data-i18n="c12"></p>
+      <div class="note"><p data-i18n="c_note"></p></div>
+      <p style="margin-top:22px" data-i18n="c13"></p><p data-i18n="c14"></p><p data-i18n="c15"></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2 data-i18n="cta_h2">&iquest;Quiere el portafolio de exportaci&oacute;n?</h2>
+      <p style="margin-top:14px;max-width:62ch" data-i18n="cta_p">Siete l&iacute;neas, quince productos, veintiún SKU. Enviamos la ficha t&eacute;cnica y las condiciones seg&uacute;n su mercado.</p>
+      <a class="btn" href="/vodka#contact" data-i18n="cta_btn">Solicitar el cat&aacute;logo &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div class="src">
+  <div class="wrap">
+    <p data-i18n="src_p">Contenido t&eacute;cnico seg&uacute;n el sitio oficial de la destiler&iacute;a de Brest &laquo;Belalco&raquo;, secci&oacute;n Tecnolog&iacute;a:</p>
+    <p style="margin-top:8px"><a href="https://brestvodka.com/about/technology/" target="_blank" rel="noopener nofollow">brestvodka.com/about/technology</a></p>
+    <p style="margin-top:14px" data-i18n="src_role">Belalco es el fabricante. MASTEFI EXPORT S.A.S. es su distribuidor comercial para los mercados acordados de Am&eacute;rica Latina y no fabrica la bebida.</p>
+    <div class="warn" data-i18n="src_warn">El consumo excesivo de alcohol perjudica la salud &middot; Material para profesionales del sector &middot; 18+</div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var ROOT=document.getElementById('mftech');
+  if(!ROOT||ROOT.dataset.ready)return; ROOT.dataset.ready='1';
+
+  /* ---- где лежат картинки (менять только эту строку) ---- */
+  var IMG_BASE='https://cdn.jsdelivr.net/gh/acernitrohappy/vodka-images@main/';
+  ROOT.querySelectorAll('[data-img]').forEach(function(im){
+    im.setAttribute('loading','lazy');
+    im.src=IMG_BASE+im.getAttribute('data-img')+'.jpg';
+  });
+
+  var T={};
+  T.ru={
+    nav_back:'← Назад к портфелю', t_label:'Belalco · Брест', t_h1:'Технология завода',
+    a_h2:'Производство',
+    a_intro:'Производство современной водки — сложнейший химико-технологический процесс, который требует строжайшего соблюдения рецептуры и режимов предельной чистоты всех составляющих будущего напитка.',
+    a_p1:'Перед созданием купажа с хлебным спиртом вода проходит тщательную очистку и не подвергается термической обработке. Её умягчают и обрабатывают натрий-катионитовыми установками и обратным осмосом. Жёсткая вода перенасыщена солями кальция и магния, так называемыми солями жёсткости, и они могут вступить в реакцию со спиртом.',
+    a_p2:'В фильтры первой ступени загружается особая смола — катионит. В результате реакции ионы кальция и магния замещаются ионами натрия, и вода доводится до определённой допустимой жёсткости. Если жёсткость не снижается, фильтр регенерируют солевым раствором, и его ёмкость снова насыщается ионами натрия. Дальше умягчённая вода направляется на установку обратного осмоса: избыточное, осмотическое давление заставляет её просочиться через ячейки тонких перегородок, заключённых в стальные цилиндры. Сырая вода становится практически совершенно чистой и готовой к смешиванию со спиртом.',
+    a_cap:'Водочный участок завода «Белалко»', a_alt:'Производственные ёмкости водочного участка завода «Белалко»',
+    b_h2:'Производственно-технологическая зона «Белалко»',
+    b_alt:'Схема производственно-технологической зоны завода «Белалко» с четырнадцатью пронумерованными участками',
+    z1:'Артезианская скважина', z2:'Подготовка воды', z3:'Приёмка и хранение этилового ректификованного спирта',
+    z4:'Приготовление водно-спиртового раствора (сортировки)', z5:'Фильтрование и обработка сортировки',
+    z6:'Ликёрный участок: приготовление и подготовка водно-спиртовых настоев, ароматных спиртов, колера и других компонентов, входящих в состав продукции',
+    z7:'Купажирование (доведение водки до стандартной крепости и задача ингредиентов)',
+    z8:'Приготовление купажа изделия и фильтрация, выдержка ликёров, фильтрование',
+    z9:'Цех розлива (розлив, упаковка, маркировка)', z10:'Сувенирное отделение ликёрного участка',
+    z11:'Отпускной участок (хранение и отпуск готовой продукции)', z12:'Экспортное отделение водочного участка',
+    z13:'Центральный склад', z14:'Посудо-тарный участок',
+    st1:'Сортировочный чан', st2:'Водоподготовка и обратный осмос', st3:'Общий вид производственной линии',
+    st4:'Бутылки на конвейере', st5:'Карусель розлива', st6:'Готовая продукция на линии',
+    c_h2:'Технология процесса',
+    c1:'Техническую и технологическую часть Брестского ликеро-водочного завода обеспечивают несколько участков, которые входят в службы главного энергетика, главного механика и инженера по механизации и автоматизации производственных процессов. Наряду с довольно стандартной структурой на «Белалко» есть и уникальные подразделения — например, участок по выращиванию трав. Его продукция нужна для изготовления особых водок и ликёров.',
+    c2:'Важнейших производственных участков шесть, включая отпускной участок и центральный склад. Самый большой — водочный: он объединяет сразу несколько звеньев технологической цепочки и предельно насыщен сложным оборудованием.',
+    c3:'Один из самых ответственных этапов производства изделия, той же водки, — момент смешения спирта с водой и последующего добавления ингредиентов. Вслед за ним смесь очищается.',
+    c4:'Наиболее приемлемыми в современном производстве водки остаются способы очистки, основанные на фильтрации, и один из самых эффективных — очистка через фильтр с древесным активированным углём. В сортировочных чанах спирт смешивается с умягчённой обработанной водой, смесь перемешивается в чанах специальными мешалками. Затем отбирают пробу полученного купажа на крепость: если она выше 40, добавляют воду, если ниже — спирт. То есть крепость корректируют.',
+    c5:'Форфильтры загружены чистейшим кварцевым песком, который дважды в месяц промывается обратным током водки, потому что песок слёживается и частично загрязняется; единожды в год эти фильтры вскрываются и тщательнейшим образом промываются очищенной водой. Последовательно расположенные фильтры заполнены песком разной фракции — крупным, средним по размеру и мелким, — но смесь поступает в них сверху вниз. Тогда как в угольных колонных фильтрах наоборот, снизу вверх, потому что уголь должен пребывать во взвешенном состоянии. После прохождения угольных фильтров смесь стала водкой.',
+    c6:'Скорость фильтрации должна соответствовать технологическому регламенту и не превышать сорока декалитров в час, а процесс не должен останавливаться. Возможны незначительные изменения по содержанию в водке альдегидов, но в любом случае оно должно соответствовать ГОСТу; эти изменения могут давать разность по вкусу изделия. Скорость фильтрации, особенно через активированный уголь, имеет большое значение для качества водки. При контакте водки с активированным углём частично адсорбируются сивушные масла — 25–40 % их общего количества в водке, — уксусный альдегид (10–17 %) и частично этиловый спирт. Происходит также частичное окисление этилового спирта кислородом, содержащимся в порах угля, до органических кислот с последующим образованием сложных эфиров и ацеталей. При этом крепость водки снижается на 0,1–0,2 %, а вкус и аромат улучшаются. Чем медленнее фильтруется водка и чем дольше она соприкасается с углём, тем выше качество готового продукта. Далее водка направляется в фильтры-песочники окончательной очистки, чтобы изъять из неё микрочастицы угля.',
+    c7:'Для этой цели используют доводные чаны. Здесь водка смешивается с отмеренными для каждого из её видов добавками и вновь проверяется на крепость. Затем водка перекачивается в передаточные чаны.',
+    c8:'Чтобы произвести экспресс-анализ изделия на крепость, отбирают литр водки на более тщательное исследование по утверждённой методике и по методике, проводимой на хроматографе. Подобное исследование делается и до процесса добавки ингредиентов. Оно необходимо, поскольку в случае каких-либо нарушений по крепости водки создавшееся положение легче исправить именно здесь.',
+    c9:'Непосредственно перед розливом водка проходит ещё один вид фильтра — через насадки пористых мембран, улавливающие микрочастицы примесей, которые можно обнаружить лишь с помощью высокоточных приборов.',
+    c10:'Потребительской тарой для водки служат бутылки из полубелого или обесцвеченного стекла. Лишь некоторые высококачественные напитки разливают в художественно оформленные, сувенирные стеклянные, фарфоровые и фаянсовые бутылки и графины различной формы.',
+    c11:'Стекло бутылок должно быть термически и химически устойчивым. Стандарты предусматривают допустимые отклонения фактического объёма бутылок от номинального.',
+    c12:'Водки и водки особые хранят при температуре от минус 5 до плюс 25, при этом минимальный срок хранения — не меньше 12 месяцев. Оптимальная температура хранения водочных изделий 10–20 °C, относительная влажность воздуха не выше 85 %. При перевозке, как и на складе, водочные бутылки должны находиться в вертикальном положении. В процессе транспортирования и погрузочно-разгрузочных операций изделия предохраняют от действия света, низких температур и атмосферных осадков. Поставщик должен гарантировать соответствие изделий стандарту при соблюдении потребителем условий хранения.',
+    c_note:'Абзац приведён так, как его публикует завод в разделе «Технология». Условия хранения и срок годности конкретной позиции MASTEFI определяются её действующей спецификацией, а не этим описанием.',
+    c13:'Если взглянуть на схему производственной зоны, легко заметить, что направлений для готовой водки два: экспортное отделение и основной цех розлива, которые для наглядности изображены отдельными объектами. Регулировать подачу позволяет специальная распределительная панель — своеобразный пульт управления трубопроводами.',
+    c14:'В цеху розлива установлены три автоматические линии известной итальянской фирмы KOSME, одного из мировых лидеров по выпуску специализированного оборудования для индустрии алкогольных напитков. При одновременной работе в цеху может разливаться три различных сорта водки. Возле каждой линии есть рабочее место, на котором производится визуальная оценка продукции: при малейшем отклонении от нормы дефектные изделия снимаются с конвейера. Следует отметить, что даже в цеху розлива спиртные напитки продолжают совершенствоваться — непосредственно за вводным продуктопроводом установлен так называемый полировочный фильтр с рейтингом 0,2 микрона. Из жидкости удаляются совершенно невидимые, мельчайшие частицы, в результате чего водка приобретает кристальную прозрачность.',
+    c15:'Ликёрный участок, как и водочный, является ядром производственной зоны завода. В его составе несколько специализированных отделений, а продукция, которая вырабатывается здесь, составляет более половины всего ассортиментного перечня завода. Производство включает полный цикл и начинается с базовых вещей: спирта и очищенной воды, получаемых по продуктопроводам. Важнейшие ингредиенты будущих напитков готовятся здесь же. Сироповарочное отделение производит сахарные и молочно-сахарные сиропы для эмульсионных ликёров, бальзамов и других изделий, а настойное отделение — настои, которые применяются на заводе исключительно широко. Как правило, основой для них служит натуральное сырьё: кроме трав, настои готовятся на ягодах, кореньях и плодах.',
+    cta_h2:'Нужен экспортный портфель?', cta_p:'Семь линеек, пятнадцать продуктов, двадцать один SKU. Пришлём спецификацию и условия под ваш рынок.',
+    cta_btn:'Запросить каталог →',
+    src_p:'Технический материал приведён по официальному сайту Брестского ликеро-водочного завода «Белалко», раздел «Технология»:',
+    src_role:'«Белалко» — производитель. MASTEFI EXPORT S.A.S. — его коммерческий дистрибьютор на согласованных рынках Латинской Америки, напиток не производит.',
+    src_warn:'Чрезмерное употребление алкоголя вредит вашему здоровью · Материал для профессионалов отрасли · 18+'
+  };
+  T.en={
+    nav_back:'← Back to the portfolio', t_label:'Belalco · Brest', t_h1:'Factory technology',
+    a_h2:'Production',
+    a_intro:'Making modern vodka is a highly complex chemical and technological process that demands strict adherence to the recipe and extreme purity in every component of the future drink.',
+    a_p1:'Before the coupage with grain spirit is prepared, the water is thoroughly cleaned and never heat treated. It is softened and processed on sodium-cationite units and by reverse osmosis. Hard water is oversaturated with calcium and magnesium salts, the so-called hardness salts, and these can react with the spirit.',
+    a_p2:'A special resin, cationite, is loaded into the first-stage filters. Through the reaction, calcium and magnesium ions are replaced by sodium ions and the water is brought to a defined permitted hardness. If the hardness does not drop, the filter is regenerated with a salt solution and its capacity is saturated with sodium ions again. The softened water then goes to the reverse osmosis unit, where excess osmotic pressure forces it through the cells of thin partitions held in steel cylinders. The raw water becomes virtually completely clean and ready to be blended with the spirit.',
+    a_cap:'Vodka area of the Belalco distillery', a_alt:'Production tanks in the vodka area of the Belalco distillery',
+    b_h2:'Belalco production and technology area',
+    b_alt:'Layout of the Belalco production and technology area with fourteen numbered sections',
+    z1:'Artesian well', z2:'Water preparation', z3:'Receiving and storage of rectified ethyl alcohol',
+    z4:'Preparation of the water and spirit solution', z5:'Filtration and treatment of the solution',
+    z6:'Liqueur area: preparation of water-spirit infusions, aromatic spirits, caramel and other components of the product',
+    z7:'Final blending (bringing the vodka to standard strength and adding ingredients)',
+    z8:'Coupage preparation and filtration, liqueur maturation, filtering',
+    z9:'Bottling hall (filling, packing, labelling)', z10:'Souvenir section of the liqueur area',
+    z11:'Dispatch area (storage and release of finished product)', z12:'Export section of the vodka area',
+    z13:'Central warehouse', z14:'Glass and packaging area',
+    st1:'Blending tank', st2:'Water preparation and reverse osmosis', st3:'General view of the production line',
+    st4:'Bottles on the conveyor', st5:'Filling carousel', st6:'Finished product on the line',
+    c_h2:'The process',
+    c1:'The engineering and technological side of the Brest distillery is run by several areas within the services of the chief power engineer, the chief mechanic and the engineer for mechanisation and automation of production. Alongside a fairly standard structure, Belalco also has unique units, for instance a herb growing area. Its output is needed for the special vodkas and liqueurs.',
+    c2:'There are six key production areas, including the dispatch area and the central warehouse. The largest is the vodka area: it brings together several links of the technological chain at once and is densely packed with complex equipment.',
+    c3:'One of the most critical stages in making the product, vodka included, is the moment the spirit is combined with water and the ingredients are added afterwards. Right after it, the blend is purified.',
+    c4:'In modern vodka production the most suitable purification methods remain those based on filtration, and one of the most effective is filtering through wood-based activated carbon. In the blending vats the spirit is mixed with softened treated water and the blend is stirred by dedicated agitators. A sample of the resulting coupage is then taken to measure strength: above 40 water is added, below it spirit is added. In other words, the strength is corrected.',
+    c5:'The prefilters are loaded with the purest quartz sand, which is backwashed with vodka twice a month because the sand compacts and partly fouls; once a year these filters are opened and washed thoroughly with purified water. The filters stand in series and are filled with sand of different grades, coarse, medium and fine, and the blend enters them from the top down. In the carbon column filters it is the opposite, from the bottom up, because the carbon has to stay suspended. Once it has passed the carbon filters, the blend has become vodka.',
+    c6:'Filtration speed has to follow the technological regulation and must not exceed forty decalitres per hour, and the process must not stop. Minor changes in the aldehyde content of the vodka are possible, but in any case it must comply with the standard; such changes can produce a difference in the taste of the product. Filtration speed, in particular through activated carbon, matters greatly for the quality of the vodka. In contact with activated carbon, fusel oils are partly adsorbed, 25 % to 40 % of their total amount in the vodka, along with acetaldehyde (10 % to 17 %) and part of the ethyl alcohol. Oxygen held in the pores of the carbon also partly oxidises the ethyl alcohol into organic acids, with esters and acetals forming afterwards. Strength drops by 0.1 % to 0.2 % while taste and aroma improve. The slower the vodka is filtered and the longer it is in contact with the carbon, the higher the quality of the finished product. The vodka then goes to the final sand filters to remove carbon microparticles.',
+    c7:'Finishing vats are used for that. Here the vodka is mixed with the additives measured out for each of its varieties and the strength is checked again. The vodka is then pumped into the transfer vats.',
+    c8:'To run the rapid strength analysis, a litre of vodka is drawn for closer study by the approved method and by the method performed on a chromatograph. The same study is run before the ingredients are added as well. It is necessary because, should anything be off in the strength of the vodka, the situation is easier to correct at that point.',
+    c9:'Immediately before bottling the vodka passes one more type of filter, through porous membrane nozzles that catch microparticles of impurities detectable only with high-precision instruments.',
+    c10:'Consumer packaging for vodka consists of bottles made of half-white or decolourised glass. Only some high-quality drinks are filled into artistically designed souvenir bottles and decanters of various shapes, made of glass, porcelain or faience.',
+    c11:'The glass of the bottles has to be thermally and chemically stable. The standards set the permitted deviations of the actual bottle volume from the nominal one.',
+    c12:'Vodkas and special vodkas are stored at temperatures from minus 5 to plus 25, with a minimum shelf life of no less than 12 months. The optimal storage temperature for vodka products is 10 °C to 20 °C and relative humidity no higher than 85 %. In transport, as in the warehouse, vodka bottles must stand upright. During transportation and loading operations the products are protected from light, low temperatures and precipitation. The supplier guarantees that the products conform to the standard provided the consumer observes the storage conditions.',
+    c_note:'This paragraph is given as the distillery publishes it in its Technology section. The storage conditions and shelf life of a specific MASTEFI item are set by its current specification, not by this description.',
+    c13:'Looking at the layout of the production area, it is easy to see that finished vodka has two destinations: the export section and the main bottling hall, drawn as separate objects for clarity. The flow is regulated by a dedicated distribution panel, a kind of control desk for the pipelines.',
+    c14:'Three automatic lines by the well-known Italian company KOSME, one of the world leaders in specialised equipment for the spirits industry, are installed in the bottling hall. Working at the same time, the hall can bottle three different vodka varieties. Next to each line there is a workstation where the product is assessed visually: at the slightest deviation from the norm, defective units are taken off the conveyor. It is worth noting that even in the bottling hall the spirits keep improving, as a so-called polishing filter rated at 0.2 micron is installed immediately after the inlet pipeline. The smallest, completely invisible particles are removed from the liquid, and the vodka takes on a crystal clarity.',
+    c15:'The liqueur area, like the vodka area, is a core of the production zone. It contains several specialised sections, and the output made here accounts for more than half of the entire product range of the distillery. Production covers the full cycle and starts from the basics: spirit and purified water delivered through the pipelines. The most important ingredients of the future drinks are prepared here as well. The syrup section produces sugar and milk-sugar syrups for emulsion liqueurs, balsams and other products, while the infusion section makes the infusions used at the distillery exceptionally widely. As a rule they are based on natural raw material: besides herbs, infusions are made on berries, roots and fruit.',
+    cta_h2:'Need the export portfolio?', cta_p:'Seven lines, fifteen products, twenty-one SKUs. We send the specification and the terms for your market.',
+    cta_btn:'Request the catalogue →',
+    src_p:'Technical content as published by the official website of the Brest distillery Belalco, Technology section:',
+    src_role:'Belalco is the manufacturer. MASTEFI EXPORT S.A.S. is its commercial distributor for the agreed Latin American markets and does not produce the drink.',
+    src_warn:'Excessive alcohol consumption harms your health · Trade material for industry professionals · 18+'
+  };
+  T.es={
+    nav_back:'← Volver al portafolio', t_label:'Belalco · Brest', t_h1:'Tecnología de la planta',
+    a_h2:'Producción',
+    a_intro:'La producción de vodka moderno es un proceso químico-tecnológico complejo que exige el cumplimiento estricto de la receta y regímenes de pureza extrema en todos los componentes de la futura bebida.',
+    a_p1:'Antes de preparar el coupage con alcohol de grano, el agua pasa por una limpieza minuciosa y no recibe tratamiento térmico. Se ablanda y se trata con instalaciones de sodio-cationita y ósmosis inversa. El agua dura está sobresaturada de sales de calcio y magnesio, las llamadas sales de dureza, y estas pueden reaccionar con el alcohol.',
+    a_p2:'En los filtros de primera etapa se carga una resina especial, la cationita. Mediante la reacción, los iones de calcio y magnesio se sustituyen por iones de sodio y el agua se lleva a una dureza admisible determinada. Si la dureza no baja, el filtro se regenera con solución salina y su capacidad vuelve a saturarse de iones de sodio. Después el agua ablandada pasa a la instalación de ósmosis inversa: una presión excesiva, osmótica, la obliga a atravesar las celdas de finas membranas alojadas en cilindros de acero. El agua bruta queda prácticamente limpia por completo y lista para mezclarse con el alcohol.',
+    a_cap:'Área de vodka de la destilería Belalco', a_alt:'Tanques de producción en el área de vodka de la destilería Belalco',
+    b_h2:'Área de producción y tecnología «Belalco»',
+    b_alt:'Esquema del área de producción y tecnología de Belalco con catorce secciones numeradas',
+    z1:'Pozo artesiano', z2:'Preparación del agua', z3:'Recepción y almacenamiento de alcohol etílico rectificado',
+    z4:'Preparación de la solución agua-alcohol', z5:'Filtrado y tratamiento de la solución',
+    z6:'Área de licores: preparación de infusiones agua-alcohol, alcoholes aromáticos, caramelo y demás componentes del producto',
+    z7:'Mezcla final (ajuste del vodka a la graduación estándar e incorporación de ingredientes)',
+    z8:'Preparación del coupage y filtración, maduración de licores, filtrado',
+    z9:'Nave de embotellado (llenado, envasado, etiquetado)', z10:'Sección de souvenirs del área de licores',
+    z11:'Área de despacho (almacenamiento y entrega de producto terminado)', z12:'Sección de exportación del área de vodka',
+    z13:'Almacén central', z14:'Área de envases',
+    st1:'Tanque de mezcla', st2:'Preparación de agua y ósmosis inversa', st3:'Vista general de la línea de producción',
+    st4:'Botellas en el transportador', st5:'Carrusel de llenado', st6:'Producto terminado en la línea',
+    c_h2:'Tecnología del proceso',
+    c1:'La parte técnica y tecnológica de la destilería de Brest está a cargo de varias áreas que forman parte de los servicios del ingeniero jefe de energía, el mecánico jefe y el ingeniero de mecanización y automatización de los procesos productivos. Junto a una estructura bastante estándar, Belalco cuenta además con unidades singulares, por ejemplo un área de cultivo de hierbas. Su producción es necesaria para elaborar los vodkas especiales y los licores.',
+    c2:'Las áreas productivas clave son seis, incluidas el área de despacho y el almacén central. La mayor es la de vodka: reúne a la vez varios eslabones de la cadena tecnológica y está densamente equipada con maquinaria compleja.',
+    c3:'Una de las etapas más delicadas de la elaboración del producto, el vodka incluido, es el momento en que el alcohol se une con el agua y después se incorporan los ingredientes. Inmediatamente después, la mezcla se purifica.',
+    c4:'En la producción moderna de vodka los métodos de purificación más adecuados siguen siendo los basados en la filtración, y uno de los más eficaces es el filtrado a través de carbón activado de madera. En los tanques de mezcla el alcohol se combina con el agua ablandada y tratada, y la mezcla se agita con agitadores especiales. Después se toma una muestra del coupage obtenido para medir la graduación: si supera 40 se añade agua, si está por debajo se añade alcohol. Es decir, se corrige la graduación.',
+    c5:'Los prefiltros van cargados con la arena de cuarzo más pura, que se lava en contracorriente con vodka dos veces al mes, porque la arena se compacta y se ensucia parcialmente; una vez al año estos filtros se abren y se lavan a fondo con agua purificada. Los filtros, dispuestos en serie, están llenos de arena de distinta granulometría, gruesa, media y fina, y la mezcla entra en ellos de arriba hacia abajo. En los filtros de columna de carbón ocurre lo contrario, de abajo hacia arriba, porque el carbón debe permanecer en suspensión. Tras pasar los filtros de carbón, la mezcla ya es vodka.',
+    c6:'La velocidad de filtración debe ajustarse al reglamento tecnológico y no superar los cuarenta decalitros por hora, y el proceso no debe detenerse. Son posibles variaciones leves en el contenido de aldehídos del vodka, pero en todo caso debe cumplir la norma; esas variaciones pueden dar diferencias en el sabor del producto. La velocidad de filtración, sobre todo a través de carbón activado, tiene gran importancia para la calidad del vodka. En contacto con el carbón activado se adsorben parcialmente los aceites de fusel, entre el 25 % y el 40 % de su cantidad total en el vodka, el aldehído acético (del 10 % al 17 %) y parte del alcohol etílico. El oxígeno contenido en los poros del carbón también oxida parcialmente el alcohol etílico hasta ácidos orgánicos, con la formación posterior de ésteres y acetales. La graduación baja entre 0,1 % y 0,2 %, y el sabor y el aroma mejoran. Cuanto más lenta es la filtración y más tiempo está el vodka en contacto con el carbón, mayor es la calidad del producto final. Después el vodka se dirige a los filtros de arena de purificación final para retirar las micropartículas de carbón.',
+    c7:'Para ello se emplean tanques de ajuste. Aquí el vodka se mezcla con los aditivos medidos para cada una de sus variedades y se vuelve a comprobar la graduación. Luego el vodka se bombea a los tanques de traspaso.',
+    c8:'Para realizar el análisis rápido de graduación se toma un litro de vodka para un estudio más detallado según el método aprobado y según el método que se realiza en el cromatógrafo. El mismo estudio se hace también antes de añadir los ingredientes. Es necesario porque, si hay alguna desviación en la graduación del vodka, en esa fase la situación es más fácil de corregir.',
+    c9:'Justo antes del embotellado el vodka atraviesa otro tipo de filtro, con boquillas de membranas porosas que retienen micropartículas de impurezas detectables solo con instrumental de alta precisión.',
+    c10:'El envase de consumo del vodka son botellas de vidrio semiblanco o decolorado. Solo algunas bebidas de alta calidad se envasan en botellas y garrafas de souvenir de diseño artístico y formas diversas, de vidrio, porcelana o loza.',
+    c11:'El vidrio de las botellas debe ser térmica y químicamente estable. Las normas establecen las desviaciones admisibles del volumen real de las botellas respecto al nominal.',
+    c12:'Los vodkas y los vodkas especiales se conservan a temperaturas de menos 5 a más 25, con una vida útil mínima no inferior a 12 meses. La temperatura óptima de conservación de los productos de vodka es de 10 °C a 20 °C y la humedad relativa no superior al 85 %. En el transporte, igual que en el almacén, las botellas deben mantenerse en posición vertical. Durante el transporte y las operaciones de carga y descarga los productos se protegen de la luz, de las bajas temperaturas y de las precipitaciones. El proveedor garantiza la conformidad de los productos con la norma siempre que el consumidor respete las condiciones de conservación.',
+    c_note:'Este párrafo se reproduce tal como lo publica la destilería en su sección de Tecnología. Las condiciones de conservación y la vida útil de una referencia concreta de MASTEFI las fija su especificación vigente, no esta descripción.',
+    c13:'Al mirar el esquema del área de producción se aprecia con facilidad que el vodka terminado tiene dos destinos: la sección de exportación y la nave principal de embotellado, representadas como objetos separados para mayor claridad. El flujo se regula mediante un panel de distribución específico, una suerte de pupitre de control de las tuberías.',
+    c14:'En la nave de embotellado hay instaladas tres líneas automáticas de la conocida firma italiana KOSME, uno de los líderes mundiales en equipamiento especializado para la industria de bebidas alcohólicas. Trabajando a la vez, la nave puede embotellar tres variedades distintas de vodka. Junto a cada línea hay un puesto de trabajo donde se realiza la evaluación visual del producto: a la menor desviación de la norma, las unidades defectuosas salen del transportador. Conviene señalar que incluso en la nave de embotellado las bebidas siguen perfeccionándose, ya que inmediatamente después de la tubería de entrada se instala el llamado filtro de pulido con un rating de 0,2 micras. Del líquido se retiran las partículas más diminutas, completamente invisibles, y el vodka adquiere una transparencia cristalina.',
+    c15:'El área de licores, igual que la de vodka, es un núcleo de la zona productiva de la planta. La integran varias secciones especializadas, y lo que se elabora aquí representa más de la mitad de todo el catálogo de la destilería. La producción abarca el ciclo completo y arranca desde lo básico: el alcohol y el agua purificada que llegan por las tuberías. Los ingredientes más importantes de las futuras bebidas se preparan aquí mismo. La sección de jarabes produce jarabes de azúcar y de azúcar con leche para licores de emulsión, bálsamos y otros productos, mientras que la sección de infusiones elabora las infusiones que en la planta se emplean de forma especialmente amplia. Por regla general se basan en materia prima natural: además de hierbas, las infusiones se preparan con bayas, raíces y frutas.',
+    cta_h2:'¿Quiere el portafolio de exportación?', cta_p:'Siete líneas, quince productos, veintiún SKU. Enviamos la ficha técnica y las condiciones según su mercado.',
+    cta_btn:'Solicitar el catálogo →',
+    src_p:'Contenido técnico según el sitio oficial de la destilería de Brest «Belalco», sección Tecnología:',
+    src_role:'Belalco es el fabricante. MASTEFI EXPORT S.A.S. es su distribuidor comercial para los mercados acordados de América Latina y no fabrica la bebida.',
+    src_warn:'El consumo excesivo de alcohol perjudica la salud · Material para profesionales del sector · 18+'
+  };
+  T.pt={
+    nav_back:'← Voltar ao portfólio', t_label:'Belalco · Brest', t_h1:'Tecnologia da fábrica',
+    a_h2:'Produção',
+    a_intro:'A produção da vodca moderna é um processo químico-tecnológico complexo que exige o cumprimento rigoroso da receita e regimes de pureza extrema em todos os componentes da futura bebida.',
+    a_p1:'Antes do preparo do coupage com álcool de cereais, a água passa por uma limpeza minuciosa e não recebe tratamento térmico. Ela é abrandada e tratada em instalações de sódio-cationita e por osmose reversa. A água dura está supersaturada de sais de cálcio e magnésio, os chamados sais de dureza, e eles podem reagir com o álcool.',
+    a_p2:'Nos filtros de primeira etapa é carregada uma resina especial, a cationita. Pela reação, os íons de cálcio e magnésio são substituídos por íons de sódio e a água chega a uma dureza admissível determinada. Se a dureza não diminui, o filtro é regenerado com solução salina e sua capacidade volta a saturar-se de íons de sódio. Em seguida a água abrandada segue para a instalação de osmose reversa: uma pressão excessiva, osmótica, a obriga a atravessar as células de finas membranas alojadas em cilindros de aço. A água bruta fica praticamente limpa por completo e pronta para ser misturada ao álcool.',
+    a_cap:'Área de vodca da destilaria Belalco', a_alt:'Tanques de produção na área de vodca da destilaria Belalco',
+    b_h2:'Área de produção e tecnologia «Belalco»',
+    b_alt:'Esquema da área de produção e tecnologia da Belalco com catorze seções numeradas',
+    z1:'Poço artesiano', z2:'Preparação da água', z3:'Recebimento e armazenamento de álcool etílico retificado',
+    z4:'Preparação da solução de água e álcool', z5:'Filtração e tratamento da solução',
+    z6:'Área de licores: preparo de infusões de água e álcool, álcoois aromáticos, caramelo e demais componentes do produto',
+    z7:'Mistura final (ajuste da vodca ao teor alcoólico padrão e incorporação dos ingredientes)',
+    z8:'Preparo do coupage e filtração, maturação de licores, filtragem',
+    z9:'Galpão de engarrafamento (enchimento, embalagem, rotulagem)', z10:'Seção de souvenirs da área de licores',
+    z11:'Área de expedição (armazenamento e liberação do produto acabado)', z12:'Seção de exportação da área de vodca',
+    z13:'Armazém central', z14:'Área de vidros e embalagens',
+    st1:'Tanque de mistura', st2:'Preparação da água e osmose reversa', st3:'Vista geral da linha de produção',
+    st4:'Garrafas na esteira', st5:'Carrossel de enchimento', st6:'Produto acabado na linha',
+    c_h2:'Tecnologia do processo',
+    c1:'A parte técnica e tecnológica da destilaria de Brest é assegurada por várias áreas que integram os serviços do engenheiro-chefe de energia, do mecânico-chefe e do engenheiro de mecanização e automação dos processos produtivos. Ao lado de uma estrutura bastante padrão, a Belalco possui também unidades singulares, por exemplo uma área de cultivo de ervas. A sua produção é necessária para elaborar as vodcas especiais e os licores.',
+    c2:'As áreas produtivas mais importantes são seis, incluindo a área de expedição e o armazém central. A maior é a de vodca: reúne de uma vez vários elos da cadeia tecnológica e é densamente equipada com maquinário complexo.',
+    c3:'Uma das etapas mais delicadas da fabricação do produto, a vodca inclusive, é o momento em que o álcool se une à água e depois se incorporam os ingredientes. Logo em seguida, a mistura é purificada.',
+    c4:'Na produção moderna de vodca os métodos de purificação mais adequados continuam sendo os baseados em filtração, e um dos mais eficazes é a filtragem por carvão ativado de madeira. Nos tanques de mistura o álcool é combinado com a água abrandada e tratada, e a mistura é agitada por agitadores próprios. Depois coleta-se uma amostra do coupage obtido para medir o teor alcoólico: acima de 40 adiciona-se água, abaixo adiciona-se álcool. Ou seja, corrige-se o teor.',
+    c5:'Os pré-filtros são carregados com a areia de quartzo mais pura, lavada em contracorrente com vodca duas vezes por mês, porque a areia compacta e suja parcialmente; uma vez por ano esses filtros são abertos e lavados a fundo com água purificada. Os filtros, dispostos em série, contêm areia de granulometrias diferentes, grossa, média e fina, e a mistura entra neles de cima para baixo. Nos filtros de coluna de carvão acontece o inverso, de baixo para cima, porque o carvão precisa permanecer em suspensão. Depois de passar pelos filtros de carvão, a mistura já é vodca.',
+    c6:'A velocidade de filtração deve seguir o regulamento tecnológico e não ultrapassar quarenta decalitros por hora, e o processo não pode parar. São possíveis variações leves no teor de aldeídos da vodca, mas em todo caso ele deve atender à norma; essas variações podem gerar diferenças no sabor do produto. A velocidade de filtração, sobretudo através do carvão ativado, tem grande importância para a qualidade da vodca. No contato com o carvão ativado adsorvem-se parcialmente os óleos fúsel, de 25 % a 40 % da sua quantidade total na vodca, o acetaldeído (de 10 % a 17 %) e parte do álcool etílico. O oxigênio contido nos poros do carvão também oxida parcialmente o álcool etílico até ácidos orgânicos, com posterior formação de ésteres e acetais. O teor alcoólico cai de 0,1 % a 0,2 % e o sabor e o aroma melhoram. Quanto mais lenta a filtração e mais longo o contato com o carvão, maior a qualidade do produto final. Em seguida a vodca segue para os filtros de areia de purificação final, para retirar as micropartículas de carvão.',
+    c7:'Para isso usam-se tanques de acabamento. Aqui a vodca é misturada com os aditivos medidos para cada uma de suas variedades e o teor é verificado novamente. Depois a vodca é bombeada para os tanques de transferência.',
+    c8:'Para fazer a análise rápida do teor alcoólico, coleta-se um litro de vodca para um estudo mais detalhado pelo método aprovado e pelo método realizado em cromatógrafo. O mesmo estudo é feito também antes da adição dos ingredientes. Ele é necessário porque, havendo qualquer desvio no teor da vodca, nessa fase a situação é mais fácil de corrigir.',
+    c9:'Imediatamente antes do engarrafamento a vodca passa por mais um tipo de filtro, com bicos de membranas porosas que retêm micropartículas de impurezas detectáveis apenas com instrumentos de alta precisão.',
+    c10:'A embalagem de consumo da vodca são garrafas de vidro semibranco ou descolorido. Apenas algumas bebidas de alta qualidade são envasadas em garrafas e garrafões de souvenir com design artístico e formatos variados, de vidro, porcelana ou faiança.',
+    c11:'O vidro das garrafas deve ser térmica e quimicamente estável. As normas preveem os desvios admissíveis do volume real das garrafas em relação ao nominal.',
+    c12:'As vodcas e as vodcas especiais são armazenadas a temperaturas de menos 5 a mais 25, com prazo mínimo de validade não inferior a 12 meses. A temperatura ideal de armazenamento dos produtos de vodca é de 10 °C a 20 °C e a umidade relativa não superior a 85 %. No transporte, assim como no armazém, as garrafas devem ficar na posição vertical. Durante o transporte e as operações de carga e descarga os produtos são protegidos da luz, de baixas temperaturas e de precipitação. O fornecedor garante a conformidade dos produtos com a norma desde que o consumidor respeite as condições de armazenamento.',
+    c_note:'Este parágrafo é reproduzido tal como a destilaria o publica na seção de Tecnologia. As condições de armazenamento e a validade de um item específico da MASTEFI são definidas pela sua especificação vigente, e não por esta descrição.',
+    c13:'Ao olhar o esquema da área de produção, percebe-se facilmente que a vodca pronta tem dois destinos: a seção de exportação e o galpão principal de engarrafamento, desenhados como objetos separados para maior clareza. O fluxo é regulado por um painel de distribuição específico, uma espécie de mesa de controle das tubulações.',
+    c14:'No galpão de engarrafamento estão instaladas três linhas automáticas da conhecida empresa italiana KOSME, uma das líderes mundiais na produção de equipamentos especializados para a indústria de bebidas alcoólicas. Trabalhando ao mesmo tempo, o galpão pode engarrafar três variedades diferentes de vodca. Junto a cada linha há um posto de trabalho onde se faz a avaliação visual do produto: ao menor desvio da norma, as unidades defeituosas saem da esteira. Vale notar que mesmo no galpão de engarrafamento as bebidas continuam a ser aperfeiçoadas, pois logo após a tubulação de entrada está instalado o chamado filtro de polimento com rating de 0,2 mícron. Do líquido são removidas as partículas mais ínfimas, totalmente invisíveis, e a vodca ganha uma transparência cristalina.',
+    c15:'A área de licores, assim como a de vodca, é um núcleo da zona produtiva da fábrica. Ela reúne várias seções especializadas, e o que se elabora ali representa mais da metade de todo o catálogo da destilaria. A produção abrange o ciclo completo e começa pelo básico: o álcool e a água purificada que chegam pelas tubulações. Os ingredientes mais importantes das futuras bebidas são preparados ali mesmo. A seção de xaropes produz xaropes de açúcar e de açúcar com leite para licores de emulsão, bálsamos e outros produtos, enquanto a seção de infusões elabora as infusões usadas na fábrica de forma especialmente ampla. Via de regra elas se baseiam em matéria-prima natural: além de ervas, as infusões são preparadas com frutas vermelhas, raízes e frutos.',
+    cta_h2:'Precisa do portfólio de exportação?', cta_p:'Sete linhas, quinze produtos, vinte e um SKUs. Enviamos a especificação e as condições para o seu mercado.',
+    cta_btn:'Solicitar o catálogo →',
+    src_p:'Conteúdo técnico conforme o site oficial da destilaria de Brest «Belalco», seção Tecnologia:',
+    src_role:'A Belalco é a fabricante. A MASTEFI EXPORT S.A.S. é sua distribuidora comercial para os mercados acordados da América Latina e não produz a bebida.',
+    src_warn:'O consumo excessivo de álcool faz mal à saúde · Material para profissionais do setor · 18+'
+  };
+
+  var KEY='mastefi_lang';
+  function apply(lang){
+    var d=T[lang]; if(!d){lang='es';d=T.es;}
+    ROOT.setAttribute('data-lang',lang);
+    ROOT.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v=d[el.getAttribute('data-i18n')]; if(v!=null)el.textContent=v;
+    });
+    ROOT.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var v=d[el.getAttribute('data-i18n-alt')]; if(v!=null)el.setAttribute('alt',v);
+    });
+    ROOT.querySelectorAll('.langs button').forEach(function(b){
+      b.setAttribute('aria-current', b.getAttribute('data-set')===lang ? 'true':'false');
+    });
+    try{localStorage.setItem(KEY,lang);}catch(e){}
+  }
+  ROOT.querySelectorAll('.langs button').forEach(function(b){
+    b.addEventListener('click',function(){apply(b.getAttribute('data-set'));});
+  });
+  var start='es';
+  try{
+    var q=new URLSearchParams(location.search).get('lang');
+    if(q&&T[q])start=q;
+    else{var s=localStorage.getItem(KEY); if(s&&T[s])start=s;}
+  }catch(e){}
+  apply(start);
+})();
+</script>
